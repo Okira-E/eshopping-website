@@ -26,6 +26,7 @@
     font-family: "Lobster", cursive;
     font-size: 3rem;
     font-weight: lighter;
+    outline: none;
     cursor: pointer;
 }
 
@@ -40,6 +41,7 @@
     color: #fff;
     text-decoration: none;
     list-style: none;
+    outline: none;
     cursor: pointer;
 }
 

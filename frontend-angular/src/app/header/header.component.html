@@ -1,10 +1,10 @@
 <nav id="container">
-    <h1 id="logo">
+    <h1 id="logo" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
         Modern Store
     </h1>
     <ul class="navigation">
         <li>My Cart</li>
-        <li>Profile</li>
+        <li routerLink="/profile" routerLinkActive="active">Profile</li>
         <li id="logout" (click)="logout()">Logout</li>
     </ul>
 </nav>
