@@ -87,7 +87,7 @@
 }
 
 .page_wrapper .right_side .register_wrapper button:hover {
-    background-color: var(--hover-color);
+    background-color: var(--primary-hover-color);
 }
 
 .page_wrapper .right_side .register_wrapper p {
