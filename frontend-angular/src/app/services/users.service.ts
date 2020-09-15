@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/users';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -39,11 +39,11 @@ export class UsersService {
     };
   }
 
-  getToken() {
+  public getToken() {
     return this.token;
   }
 
-  getIsAuth(): boolean {
+  public getIsAuth(): boolean {
     return this.isAuthenticated;
   }
 
