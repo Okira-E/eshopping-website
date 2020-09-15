@@ -7,15 +7,17 @@ const productSchema = new mongoose.Schema({
         maxlength: 30,
         trim: true,
     },
+    price: {
+        required: true,
+        type: Number,
+    },
     description: {
         required: false,
         type: String,
         maxlength: 400,
     },
-    price: {
-        required: true,
-        type: Number,
-    },
 }, {
     timestamps: true,
 });
+
+const Product = mongoose.model("Product", productSchema);
