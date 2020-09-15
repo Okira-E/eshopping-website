@@ -26,5 +26,8 @@ export class LoginComponent implements OnInit {
     }
 
     this.usersService.loginUser(user);
+    this.usersService.getErrorMessage().subscribe((errMsg) => {
+      this.errorMessage = errMsg;
+    });
   }
 }

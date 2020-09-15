@@ -30,11 +30,15 @@ export class RegisterComponent implements OnInit {
       form.value.password === ''
     ) {
       this.errorMessage = 'All fields are required';
+      return;
     } else if (form.invalid) {
       this.errorMessage = 'Password should be at least 8 characters long';
       return;
     }
 
     this.usersService.registerUser(user);
+    this.usersService.getErrorMessage().subscribe((errMsg) => {
+      this.errorMessage = errMsg;
+    });
   }
 }

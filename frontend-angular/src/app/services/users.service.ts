@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/users';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -15,8 +15,13 @@ export class UsersService {
   private timeout: number = 4 * 24 * 60 * 60; // 4 days
   private tokenTimer;
 
+  private errorMessage: string = '';
+  private errorMessageListener = new BehaviorSubject<string>(this.errorMessage);
+  private currentErrorMessage = this.errorMessageListener.asObservable();
+
   constructor(private http: HttpClient, private router: Router) {}
 
+  // Statics
   private static saveTokenInLocalStorage(token, expirationDate: Date): void {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
@@ -39,6 +44,12 @@ export class UsersService {
     };
   }
 
+  // Public
+
+  public getErrorMessage() {
+    return this.currentErrorMessage;
+  }
+
   public getToken() {
     return this.token;
   }
@@ -54,45 +65,59 @@ export class UsersService {
   public registerUser(user: User) {
     this.http
       .post<{ token: string }>(`${this.url}/api/users/register/`, user)
-      .subscribe((res) => {
-        this.token = res.token;
-        this.isAuthenticated = true;
-        this.authStatusListener.next(true);
-        this.tokenTimer = setTimeout(() => {
-          this.token = null;
-          this.isAuthenticated = false;
-          this.authStatusListener.next(false);
-          window.alert('Your session has expired, please sign in again');
-          this.logout();
-          this.router.navigate(['/login']);
-        }, this.timeout * 1000);
-        const now: Date = new Date();
-        const expiration: Date = new Date(now.getTime() + this.timeout * 1000);
-        UsersService.saveTokenInLocalStorage(this.token, expiration);
-        this.router.navigate(['/']);
-      });
+      .subscribe(
+        (res) => {
+          this.token = res.token;
+          this.isAuthenticated = true;
+          this.authStatusListener.next(true);
+          this.tokenTimer = setTimeout(() => {
+            this.token = null;
+            this.isAuthenticated = false;
+            this.authStatusListener.next(false);
+            window.alert('Your session has expired, please sign in again');
+            this.logout();
+            this.router.navigate(['/login']);
+          }, this.timeout * 1000);
+          const now: Date = new Date();
+          const expiration: Date = new Date(
+            now.getTime() + this.timeout * 1000
+          );
+          UsersService.saveTokenInLocalStorage(this.token, expiration);
+          this.router.navigate(['/']);
+        },
+        (err) => {
+          this.errorMessageListener.next('Email has already been used');
+        }
+      );
   }
 
   public loginUser(user: User): void {
     this.http
       .post<{ token: string }>(`${this.url}/api/users/login/`, user)
-      .subscribe((res: { token: string }) => {
-        this.token = res.token;
-        this.isAuthenticated = true;
-        this.authStatusListener.next(true);
-        this.tokenTimer = setTimeout(() => {
-          this.token = null;
-          this.isAuthenticated = false;
-          this.authStatusListener.next(false);
-          window.alert('Your session has expired, please sign in again');
-          this.logout();
-          this.router.navigate(['/login']);
-        }, this.timeout * 1000);
-        const now: Date = new Date();
-        const expiration: Date = new Date(now.getTime() + this.timeout * 1000);
-        UsersService.saveTokenInLocalStorage(this.token, expiration);
-        this.router.navigate(['/']);
-      });
+      .subscribe(
+        (res: { token: string }) => {
+          this.token = res.token;
+          this.isAuthenticated = true;
+          this.authStatusListener.next(true);
+          this.tokenTimer = setTimeout(() => {
+            this.token = null;
+            this.isAuthenticated = false;
+            this.authStatusListener.next(false);
+            window.alert('Your session has expired, please sign in again');
+            this.logout();
+            this.router.navigate(['/login']);
+          }, this.timeout * 1000);
+          const now: Date = new Date();
+          const expiration: Date = new Date(
+            now.getTime() + this.timeout * 1000
+          );
+          UsersService.saveTokenInLocalStorage(this.token, expiration);
+          this.router.navigate(['/']);
+        },
+        (err) => {
+          this.errorMessageListener.next('Unable to login');
+        }
+      );
   }
 
   public logout(): void {
