@@ -1,0 +1,83 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 92vh;
+    background-color: #f0f0f0;
+    box-sizing: border-box;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10rem;
+    width: 50vw;
+    height: 50vh;
+    background-color: #fff;
+    box-shadow: -0.7rem 0 var(--primary-color);
+    box-sizing: border-box;
+}
+
+.profile-container img {
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-bottom: 1rem;
+    max-width: 35%;
+    max-height: 35%;
+}
+
+.profile-container .info {
+    margin-right: 20%;
+    width: 80%;
+}
+
+.profile-container .info .detail {
+    margin: 2rem 0;
+}
+
+.profile-container .info h2 {
+    padding: 0.8rem 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5rem;
+}
+
+.profile-container .info p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+}
+
+.profile-container .info .input-form label {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.profile-container .info .input-form input {
+    margin-top: 0.8rem;
+    padding: 0.3rem;
+    width: 100%;
+    border-radius: 0.3rem;
+    border: 0.1rem #aaa solid;
+    outline: none;
+}
+
+.profile-container .info form button {
+    margin-top: 1rem;
+}
+
+.profile-container .info .render {
+    padding: 0.6rem;
+    width: 100%;
+    color: #fff;
+    background-color: var(--primary-lighter-color);
+    border: 0;
+    border-radius: 0.3rem;
+    outline: none;
+    cursor: pointer;
+}
+
+.profile-container .info .render:hover {
+    background-color: var(--primary-hover-color);
+}

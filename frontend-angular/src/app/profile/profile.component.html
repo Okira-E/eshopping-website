@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="container">
+    <div class="profile-container">
+        <img src="../../assets/empty-profile.png">
+        <div class="info">
+            <section *ngIf="!onPasswordChange" class="detail">
+                <h2>First Name</h2>
+                <p>{{firstName}}</p>
+            </section>
+            <section *ngIf="!onPasswordChange" class="detail">
+                <h2>Last Name</h2>
+                <p>{{lastName}}</p>
+            </section>
+            <section *ngIf="!onPasswordChange" class="detail">
+                <h2>Email Address</h2>
+                <p>{{email}}</p>
+            </section>
+            <form *ngIf="onPasswordChange" (ngSubmit)="changePassword(input)" #input="ngForm">
+                <div class="input-form detail">
+                    <label for="old-password">Old Password</label>
+                    <input ngModel required type="password" minlength="8" name="old_password" id="old-password">
+                </div>
+                <div class="input-form detail">
+                    <label for="new-password">New Password</label>
+                    <input ngModel required type="password" minlength="8" name="new_password" id="new-password">
+                </div>
+                <button class="success">Update</button>
+                <button class="danger" (click)="toggleRenderPasswordChange()">Cancel</button>
+            </form>
+            <button class="render" *ngIf="!onPasswordChange" (click)="toggleRenderPasswordChange()">Update password</button>
+        </div>
+    </div>
+</div>
