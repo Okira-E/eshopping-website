@@ -1,0 +1,32 @@
+<div class="page_wrapper">
+    <div class="left_side">
+        <div class="logo">Modern Store</div>
+    </div>
+    <div class="right_side">
+        <form class="register_wrapper" (ngSubmit)="onRegister(input)" #input="ngForm">
+            <h2 id="heading">Sign Up</h2>
+            <p class="error_message">{{errorMessage}}</p>
+            <div class="form_input">
+                <label for="fname">First Name</label>
+                <input ngModel required type="text" name="fname" id="fname" placeholder="Bruce" />
+            </div>
+            <div class="form_input">
+                <label for="lname">Last Name</label>
+                <input ngModel required type="text" name="lname" id="lname" placeholder="Wayne" />
+            </div>
+            <div class="form_input">
+                <label for="email">Email Address</label>
+                <input ngModel required type="email" name="email" id="email" placeholder="batman@asylum.com" />
+            </div>
+            <div class="form_input">
+                <label for="pass">Password</label>
+                <input ngModel required minlength="8" type="password" name="pass" id="pass" placeholder="Password should be at least 8 characters" />
+            </div>
+            <button>Submit</button>
+            <p>
+                Already joined?
+                <a routerLink="/login"> Sign in here </a>
+            </p>
+        </form>
+    </div>
+</div>
