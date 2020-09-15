@@ -11,7 +11,6 @@ router.post("/api/users/register", async(req, res) => {
     try {
         const newUser = await new User({...req.body }).save();
         const token = await newUser.generateToken();
-        console.log(token);
         res.status(201).send({ token });
     } catch (e) {
         res.status(500).send({ error: e });
@@ -29,7 +28,26 @@ router.post("/api/users/login", async(req, res) => {
     } catch {
         res.status(400).send("Unable to login");
     }
-})
+});
+
+// PATCH /////////////////////////////////////////////////////////
+
+router.patch("/api/users/updatepassword", auth, async(req, res) => {
+    const user = req.user;
+    const oldPassword = req.body.oldPassword;
+    const newPassword = req.body.newPassword;
+
+    try {
+        const isMatch = await User.findByCredentials(user.email, oldPassword);
+        if (!isMatch) {
+            throw new Error();
+        }
+        await user.updatePassword(newPassword);
+        res.status(200).send();
+    } catch {
+        res.status(400).send();
+    }
+});
 
 // DELETE REQUESTS ///////////////////////////////////////////////////////////////////
 router.delete("/api/users/me", auth, async(req, res) => {
