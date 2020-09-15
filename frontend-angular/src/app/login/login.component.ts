@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
     };
 
     if (user.email === '' || user.password === '') {
+      this.errorMessage = 'All fields are required';
       return;
     }
 
