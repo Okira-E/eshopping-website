@@ -1,4 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    --primary-color: rgb(0, 179, 255);
+    --primary-lighter-color: rgb(0, 200, 255);
+    --hover-color: rgb(6, 184, 233);
 }
