@@ -3,5 +3,35 @@
     padding: 0;
     --primary-color: rgb(0, 179, 255);
     --primary-lighter-color: rgb(0, 200, 255);
-    --hover-color: rgb(6, 184, 233);
+    --primary-hover-color: rgb(6, 184, 233);
+}
+
+.success {
+    padding: 0.6rem;
+    width: 70%;
+    color: #fff;
+    background-color: rgb(39, 214, 39);
+    border: 0;
+    border-radius: 0.3rem;
+    outline: none;
+    cursor: pointer;
+}
+
+.success:hover {
+    background-color: rgb(36, 176, 36);
+}
+
+.danger {
+    padding: 0.6rem;
+    width: 70%;
+    color: #fff;
+    background-color: #f00;
+    border: 0;
+    border-radius: 0.3rem;
+    outline: none;
+    cursor: pointer;
+}
+
+.danger:hover {
+    background-color: rgb(192, 13, 13);
 }
