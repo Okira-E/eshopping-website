@@ -129,6 +129,10 @@ export class UsersService {
     this.router.navigate(['/login']);
   }
 
+  public updatePassword(user: { oldPassword: string; newPassword: string }) {
+    this.http.patch(this.url + '/api/users/updatepassword', user).subscribe();
+  }
+
   public autoAuthUser() {
     const authHeader = UsersService.getTokenFromLocalStorage();
     if (!authHeader) {
