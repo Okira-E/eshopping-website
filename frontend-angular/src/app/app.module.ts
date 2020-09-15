@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
     RegisterComponent,
     LoginComponent,
     HomeComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
