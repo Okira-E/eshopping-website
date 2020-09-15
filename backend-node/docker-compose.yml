@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    command: "npm run dev"
+    volumes:
+      - .:/src
+      - node_modules
+    ports:
+      - "3200:3200"
+    depends_on:
+      - mongo
+    links:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
