@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   public email: string = '';
 
   public onPasswordChange: boolean = false;
+  public errorMessage: string = '';
 
   constructor(private usersService: UsersService) {}
 
@@ -34,6 +35,14 @@ export class ProfileComponent implements OnInit {
   public changePassword(form: NgForm) {
     const oldPassword = form.value.old_password;
     const newPassword = form.value.new_password;
+
+    if (form.invalid) {
+      this.errorMessage = 'Passwords should be at least 8 characters long';
+      return;
+    } else if (oldPassword === newPassword) {
+      this.errorMessage = "Old password can't be the same as the new password";
+      return;
+    }
 
     this.usersService.updatePassword({ oldPassword, newPassword });
   }
