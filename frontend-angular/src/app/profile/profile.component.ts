@@ -3,6 +3,7 @@ import { UsersService } from '../services/users.service';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { imageValidator } from '../services/mime-type.validator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -14,13 +15,14 @@ export class ProfileComponent implements OnInit {
   public firstName: string = '';
   public lastName: string = '';
   public email: string = '';
+  public profilePic: string;
 
   public form: FormGroup;
 
   public onPasswordChange: boolean = false;
   public errorMessage: string = '';
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private router: Router) {}
 
   ngOnInit(): void {
     this.getData();
@@ -39,7 +41,6 @@ export class ProfileComponent implements OnInit {
   public toggleRenderImageSection() {
     this.imagePreview = '';
     this.form.get('image').updateValueAndValidity();
-    console.log(this.form);
   }
 
   public getData() {
@@ -48,6 +49,7 @@ export class ProfileComponent implements OnInit {
     this.firstName = this.usersService.user.firstName;
     this.lastName = this.usersService.user.lastName;
     this.email = this.usersService.user.email;
+    this.profilePic = this.usersService.user.profilePic;
   }
 
   public changePassword(form: NgForm) {
@@ -78,10 +80,20 @@ export class ProfileComponent implements OnInit {
       this.imagePreview = reader.result;
     };
     reader.readAsDataURL(file);
-    console.log(this.form);
   }
 
   public updateProfilePicture() {
-    //
+    const formData = new FormData();
+    if (this.form.invalid) {
+      return;
+    }
+    formData.append(
+      'image',
+      this.form.value.image,
+      `${this.firstName}-${this.lastName}`
+    );
+
+    this.usersService.updateProfilePicture(formData);
+    this.router.navigate(['/']);
   }
 }
