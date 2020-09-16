@@ -59,9 +59,18 @@
     margin: 2rem 0;
 }
 
-.profile-container .info h2 {
+.profile-container .info .detail div {
+    box-shadow: 0 0.3rem var(--primary-color);
+}
+
+.profile-container .info .detail p {
+    padding-bottom: 0.2rem;
+}
+
+.profile-container .info .detail h2 {
     padding: 0.8rem 0;
-    font-family: 'Lato', sans-serif;
+    /* font-family: 'Lato', sans-serif; */
+    font-family: 'Raleway', sans-serif;
     font-size: 1.5rem;
 }
 

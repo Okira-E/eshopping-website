@@ -12,15 +12,21 @@
         <div class="info">
             <section *ngIf="!onPasswordChange" class="detail">
                 <h2>First Name</h2>
-                <p>{{ firstName }}</p>
+                <div>
+                    <p>{{ firstName }}</p>
+                </div>
             </section>
             <section *ngIf="!onPasswordChange" class="detail">
                 <h2>Last Name</h2>
-                <p>{{ lastName }}</p>
+                <div>
+                    <p>{{ lastName }}</p>
+                </div>
             </section>
             <section *ngIf="!onPasswordChange" class="detail">
                 <h2>Email Address</h2>
-                <p>{{ email }}</p>
+                <div>
+                    <p>{{ email }}</p>
+                </div>
             </section>
             <form *ngIf="onPasswordChange" (ngSubmit)="changePassword(input)" #input="ngForm">
                 <p class="error_message">{{ errorMessage }}</p>
