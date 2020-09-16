@@ -4,6 +4,7 @@
     to {
         background-color: #fff;
         color: rgb(0, 179, 255);
+        box-shadow: 0 0.4rem var(--primary-color);
     }
 }
 
