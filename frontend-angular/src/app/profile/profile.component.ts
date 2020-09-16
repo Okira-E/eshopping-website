@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   public profilePic: string;
 
   public form: FormGroup;
+  // Hello from khalil
 
   public onPasswordChange: boolean = false;
   public errorMessage: string = '';
