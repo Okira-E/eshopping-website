@@ -130,7 +130,11 @@ export class UsersService {
   }
 
   public updatePassword(user: { oldPassword: string; newPassword: string }) {
-    this.http.patch(this.url + '/api/users/updatepassword', user).subscribe();
+    this.http
+      .patch(this.url + '/api/users/updatepassword', user)
+      .subscribe((res) => {
+        this.logout();
+      });
   }
 
   public autoAuthUser() {
