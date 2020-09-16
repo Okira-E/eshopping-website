@@ -30,6 +30,20 @@ router.post("/api/users/login", async(req, res) => {
     }
 });
 
+// GET /////////////////////////////////////////////////////////
+
+router.get("/api/users/getuserdata", auth, (req, res) => {
+    const user = req.user;
+    console.log("Beeb here, seen that");
+
+    try {
+        res.status(200).send(user);
+    } catch {
+        res.status(500).send();
+    }
+});
+
+
 // PATCH /////////////////////////////////////////////////////////
 
 router.patch("/api/users/updatepassword", auth, async(req, res) => {
