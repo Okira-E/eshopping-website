@@ -34,7 +34,6 @@ router.post("/api/users/login", async(req, res) => {
 
 router.get("/api/users/getuserdata", auth, (req, res) => {
     const user = req.user;
-    console.log("Beeb here, seen that");
 
     try {
         res.status(200).send(user);
