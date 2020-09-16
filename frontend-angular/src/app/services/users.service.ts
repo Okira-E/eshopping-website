@@ -8,6 +8,7 @@ interface userData {
   firstName: string;
   lastName: string;
   email: string;
+  profilePic: string;
 }
 
 @Injectable({
@@ -29,6 +30,7 @@ export class UsersService {
     firstName: 'user',
     lastName: 'user',
     email: 'user',
+    profilePic: '',
   };
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -132,6 +134,12 @@ export class UsersService {
       );
   }
 
+  public updateProfilePicture(formData: FormData) {
+    this.http
+      .post(this.url + '/api/users/updateprofilepicture', formData)
+      .subscribe();
+  }
+
   public logout(): void {
     this.token = null;
     this.isAuthenticated = false;
@@ -170,10 +178,19 @@ export class UsersService {
   }
 
   public getUserInfo = () => {
-    this.http.get<any>(this.url + '/api/users/getuserdata').subscribe((res) => {
-      this.user.firstName = res.firstName;
-      this.user.lastName = res.lastName;
-      this.user.email = res.email;
-    });
+    this.http
+      .get<{
+        firstName: string;
+        lastName: string;
+        email: string;
+        profilePic: string;
+      }>(this.url + '/api/users/getdata')
+      .subscribe((res) => {
+        console.log(res);
+        this.user.firstName = res.firstName;
+        this.user.lastName = res.lastName;
+        this.user.email = res.email;
+        this.user.profilePic = res.profilePic;
+      });
   };
 }
