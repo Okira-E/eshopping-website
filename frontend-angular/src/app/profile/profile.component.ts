@@ -27,9 +27,11 @@ export class ProfileComponent implements OnInit {
   }
 
   public getData() {
-    this.firstName = 'Omar';
-    this.lastName = 'Rafat';
-    this.email = 'omarrafat60@gmail.com';
+    this.usersService.getUserInfo();
+
+    this.firstName = this.usersService.user.firstName;
+    this.lastName = this.usersService.user.lastName;
+    this.email = this.usersService.user.email;
   }
 
   public changePassword(form: NgForm) {
@@ -45,5 +47,9 @@ export class ProfileComponent implements OnInit {
     }
 
     this.usersService.updatePassword({ oldPassword, newPassword });
+  }
+
+  public updateProfilePicture() {
+    //
   }
 }

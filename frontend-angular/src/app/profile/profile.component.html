@@ -3,7 +3,7 @@
     <div class="profile-container">
         <div class="profile-picture">
             <img src="../../assets/empty-profile.png" width="80%" />
-            <button *ngIf="!onPasswordChange" class="success">Update Profile Picture</button>
+            <button *ngIf="!onPasswordChange" class="success" (click)="updateProfilePicture()">Update Profile Picture</button>
         </div>
         <div class="info">
             <section *ngIf="!onPasswordChange" class="detail">
