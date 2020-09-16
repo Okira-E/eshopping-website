@@ -4,6 +4,12 @@ import { User } from '../models/users';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
+interface userData {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -18,6 +24,12 @@ export class UsersService {
   private errorMessage: string = '';
   private errorMessageListener = new BehaviorSubject<string>(this.errorMessage);
   private currentErrorMessage = this.errorMessageListener.asObservable();
+
+  public user: userData = {
+    firstName: 'user',
+    lastName: 'user',
+    email: 'user',
+  };
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -156,4 +168,12 @@ export class UsersService {
     }
     return this.getIsAuth();
   }
+
+  public getUserInfo = () => {
+    this.http.get<any>(this.url + '/api/users/getuserdata').subscribe((res) => {
+      this.user.firstName = res.firstName;
+      this.user.lastName = res.lastName;
+      this.user.email = res.email;
+    });
+  };
 }
