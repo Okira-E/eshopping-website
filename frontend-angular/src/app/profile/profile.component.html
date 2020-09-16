@@ -1,7 +1,10 @@
 <app-header></app-header>
 <div class="container">
     <div class="profile-container">
-        <img src="../../assets/empty-profile.png" />
+        <div class="profile-picture">
+            <img src="../../assets/empty-profile.png" width="80%" />
+            <button *ngIf="!onPasswordChange" class="success">Update Profile Picture</button>
+        </div>
         <div class="info">
             <section *ngIf="!onPasswordChange" class="detail">
                 <h2>First Name</h2>
