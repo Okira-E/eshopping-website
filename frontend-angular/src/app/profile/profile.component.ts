@@ -41,6 +41,9 @@ export class ProfileComponent implements OnInit {
     if (form.invalid) {
       this.errorMessage = 'Passwords should be at least 8 characters long';
       return;
+    } else if (oldPassword === '' || newPassword === '') {
+      this.errorMessage = 'Both fields are required';
+      return;
     } else if (oldPassword === newPassword) {
       this.errorMessage = "Old password can't be the same as the new password";
       return;
