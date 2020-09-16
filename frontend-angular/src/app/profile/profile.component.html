@@ -1,10 +1,14 @@
 <app-header></app-header>
 <div class="container">
     <div class="profile-container">
-        <div class="profile-picture">
-            <img src="../../assets/empty-profile.png" width="80%" />
-            <button *ngIf="!onPasswordChange" class="success" (click)="updateProfilePicture()">Update Profile Picture</button>
-        </div>
+        <form [formGroup]="form" class="profile-picture">
+            <img *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid" [src]="imagePreview" width="80%" />
+            <img *ngIf="imagePreview === '' && !imagePreview" src="../../assets/empty-profile.png" width="80%" />
+            <button *ngIf="!onPasswordChange && imagePreview === '' && !imagePreview" class="success" (click)="inputFile.click()">Update Profile Picture</button>
+            <button *ngIf="!onPasswordChange && imagePreview !== '' && imagePreview" class="success" style="margin-bottom: 0.5rem;" (click)="updateProfilePicture()">Confirm</button>
+            <button *ngIf="!onPasswordChange && imagePreview !== '' && imagePreview" class="danger" style="margin-top: 0.5rem;" (click)="toggleRenderImageSection()">Cancel</button>
+            <input (change)="onChangeProfilePicture($event)" type="file" #inputFile>
+        </form>
         <div class="info">
             <section *ngIf="!onPasswordChange" class="detail">
                 <h2>First Name</h2>
@@ -33,7 +37,7 @@
           Cancel
         </button>
             </form>
-            <button class="render" *ngIf="!onPasswordChange" (click)="toggleRenderPasswordChange()">
+            <button class="render" *ngIf="!onPasswordChange && (!onPasswordChange && imagePreview === '' && !imagePreview)" (click)="toggleRenderPasswordChange()">
         Update Password
       </button>
         </div>

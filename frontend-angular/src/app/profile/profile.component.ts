@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+
+import { imageValidator } from '../services/mime-type.validator';
 
 @Component({
   selector: 'app-profile',
@@ -8,10 +10,12 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  public img: ImageData;
+  public imagePreview: string | ArrayBuffer = '';
   public firstName: string = '';
   public lastName: string = '';
   public email: string = '';
+
+  public form: FormGroup;
 
   public onPasswordChange: boolean = false;
   public errorMessage: string = '';
@@ -20,10 +24,22 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData();
+    this.form = new FormGroup({
+      image: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [imageValidator],
+      }),
+    });
   }
 
   public toggleRenderPasswordChange() {
     this.onPasswordChange = !this.onPasswordChange;
+  }
+
+  public toggleRenderImageSection() {
+    this.imagePreview = '';
+    this.form.get('image').updateValueAndValidity();
+    console.log(this.form);
   }
 
   public getData() {
@@ -50,6 +66,19 @@ export class ProfileComponent implements OnInit {
     }
 
     this.usersService.updatePassword({ oldPassword, newPassword });
+  }
+
+  public onChangeProfilePicture(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({ image: file });
+    this.form.get('image').updateValueAndValidity();
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(file);
+    console.log(this.form);
   }
 
   public updateProfilePicture() {

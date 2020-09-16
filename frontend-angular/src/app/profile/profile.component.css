@@ -46,6 +46,10 @@
     cursor: pointer;
 }
 
+.profile-container .profile-picture input[type="file"] {
+    visibility: hidden;
+}
+
 .profile-container .info {
     margin-right: 10%;
     width: 20%;
