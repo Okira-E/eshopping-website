@@ -186,7 +186,6 @@ export class UsersService {
         profilePic: string;
       }>(this.url + '/api/users/getdata')
       .subscribe((res) => {
-        console.log(res);
         this.user.firstName = res.firstName;
         this.user.lastName = res.lastName;
         this.user.email = res.email;
