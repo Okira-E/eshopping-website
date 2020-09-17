@@ -4,6 +4,7 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { imageValidator } from '../services/mime-type.validator';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
@@ -22,16 +23,32 @@ export class ProfileComponent implements OnInit {
   public onPasswordChange: boolean = false;
   public errorMessage: string = '';
 
-  constructor(private usersService: UsersService, private router: Router) {}
+  constructor(
+    private usersService: UsersService,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
-    this.getData();
     this.form = new FormGroup({
       image: new FormControl(null, {
         validators: [Validators.required],
         asyncValidators: [imageValidator],
       }),
     });
+    this.http
+      .get<{
+        firstName: string;
+        lastName: string;
+        email: string;
+        profilePic: string;
+      }>(this.usersService.url + '/api/users/getdata')
+      .subscribe((res) => {
+        this.firstName = res.firstName;
+        this.lastName = res.lastName;
+        this.email = res.email;
+        this.profilePic = res.profilePic;
+      });
   }
 
   public toggleRenderPasswordChange() {
@@ -41,15 +58,6 @@ export class ProfileComponent implements OnInit {
   public toggleRenderImageSection() {
     this.imagePreview = '';
     this.form.get('image').updateValueAndValidity();
-  }
-
-  public getData() {
-    this.usersService.getUserInfo();
-
-    this.firstName = this.usersService.user.firstName;
-    this.lastName = this.usersService.user.lastName;
-    this.email = this.usersService.user.email;
-    this.profilePic = this.usersService.user.profilePic;
   }
 
   public changePassword(form: NgForm) {
