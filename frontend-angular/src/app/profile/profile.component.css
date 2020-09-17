@@ -35,6 +35,10 @@
     max-width: 14rem;
 }
 
+.profile-container .profile-picture img {
+    border-radius: 25%;
+}
+
 .profile-container .profile-picture button {
     margin-top: 2rem;
     padding: 0.6rem;
