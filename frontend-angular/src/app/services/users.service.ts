@@ -4,18 +4,11 @@ import { User } from '../models/users';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
-interface userData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  profilePic: string;
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  private url: string = 'http://0.0.0.0:3200';
+  public url: string = 'http://0.0.0.0:3200';
   private token: string = '';
   private isAuthenticated: boolean;
   private authStatusListener = new Subject<boolean>();
@@ -25,13 +18,6 @@ export class UsersService {
   private errorMessage: string = '';
   private errorMessageListener = new BehaviorSubject<string>(this.errorMessage);
   private currentErrorMessage = this.errorMessageListener.asObservable();
-
-  public user: userData = {
-    firstName: 'user',
-    lastName: 'user',
-    email: 'user',
-    profilePic: '',
-  };
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -176,20 +162,4 @@ export class UsersService {
     }
     return this.getIsAuth();
   }
-
-  public getUserInfo = () => {
-    this.http
-      .get<{
-        firstName: string;
-        lastName: string;
-        email: string;
-        profilePic: string;
-      }>(this.url + '/api/users/getdata')
-      .subscribe((res) => {
-        this.user.firstName = res.firstName;
-        this.user.lastName = res.lastName;
-        this.user.email = res.email;
-        this.user.profilePic = res.profilePic;
-      });
-  };
 }
