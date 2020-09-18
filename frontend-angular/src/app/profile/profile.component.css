@@ -28,15 +28,12 @@
     justify-content: center;
     align-items: center;
     margin-left: 10%;
-    /* margin-right: 20px; */
     padding-bottom: 1rem;
-    /* width: 35%;
-    max-height: 35%; */
     max-width: 14rem;
 }
 
 .profile-container .profile-picture img {
-    border-radius: 25%;
+    border-radius: 10%;
 }
 
 .profile-container .profile-picture button {
