@@ -2,7 +2,7 @@
 <div class="container">
     <div class="profile-container">
         <form [formGroup]="form" class="profile-picture">
-            <img *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid" [src]="imagePreview" width="50rem" />
+            <img *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid" [src]="imagePreview" width="80%" />
             <img *ngIf="imagePreview === '' && !imagePreview" [src]="profilePic ? profilePic : '../../assets/empty-profile.png'" width="80%" />
             <button *ngIf="!onPasswordChange && imagePreview === '' && !imagePreview && email !== 'user'" class="success" (click)="inputFile.click()">Update Profile Picture</button>
             <button *ngIf="!onPasswordChange && imagePreview !== '' && imagePreview" class="success" style="margin-bottom: 0.5rem;" (click)="updateProfilePicture()">Confirm</button>
