@@ -3,3 +3,11 @@
 /backend-node/images
 /frontend-react/node_modules
 /frontend-angular/node_modulesm12
+/.idea
+/.vscode
+/backend-node/.idea
+/frontend-angular/.idea
+/frontend-react/.idea
+/backend-node/.vscode
+/frontend-angular/.vscode
+/frontend-react/.vscode
