@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 92vh;
+  background-color: #f5f5f5;
+  box-sizing: border-box;
+}
+
+.container .my-cart-container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .my-cart-container .my-cart-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 7rem;
+  width: 25rem;
+  height: 33rem;
+  border: 0.1rem #35B3FF solid;
+  background-color: #fff;
+}
+
+.container .store-container {
+  flex: 2.5;
+  background-color: #fff;
+}
