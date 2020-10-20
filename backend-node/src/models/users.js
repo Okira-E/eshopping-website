@@ -92,8 +92,7 @@ userSchema.methods.generateToken = async function() {
 userSchema.methods.updatePassword = async function(password) {
     this.password = password;
     await this.save();
-}
-
+};
 
 const User = mongoose.model("User", userSchema);
 
