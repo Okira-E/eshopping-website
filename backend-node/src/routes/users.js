@@ -54,8 +54,7 @@ router.post("/api/users/login", async(req, res) => {
 });
 
 router.post(
-    "/api/users/updateprofilepicture", [auth, multer({ storage }).single("image")],
-    async(req, res, next) => {
+    "/api/users/updateprofilepicture", [auth, multer({ storage }).single("image")], async(req, res) => {
         const user = req.user;
 
         const serverUrl = req.protocol + "://" + req.get("host");
