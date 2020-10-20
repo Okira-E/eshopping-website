@@ -7,101 +7,86 @@
     box-sizing: border-box;
 }
 
-.profile-container {
+.container .profile-container {
     display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 10rem;
-    /* padding: 0 5%; */
-    max-width: 50vw;
-    min-height: 50vh;
+    margin-bottom: 5%;
     background-color: #fff;
-    box-shadow: -0.7rem 0 var(--primary-color);
+    width: 30rem;
+    height: 40rem;
+    box-shadow: 1.7rem 1.2rem rgb(3, 145, 205);
+    border: 1px var(--primary-color) solid;
     box-sizing: border-box;
 }
 
-.profile-container .profile-picture {
+.container .profile-container section form button {
+    display: block;
+    width: 40%;
+}
+
+.container .profile-container .profile-picture {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-left: 10%;
-    padding-bottom: 1rem;
-    max-width: 14rem;
 }
 
-.profile-container .profile-picture img {
-    border-radius: 10%;
+.container .profile-container .profile-picture img {
+    margin-top: 3.5rem;
+    max-width: 7rem;
+    border-radius: 5%;
 }
 
-.profile-container .profile-picture button {
-    margin-top: 2rem;
-    padding: 0.6rem;
-    width: 70%;
-    color: #fff;
-    border: 0;
-    border-radius: 0.3rem;
-    outline: none;
-    cursor: pointer;
+.container .profile-container .profile-picture button {
+    margin-top: 1rem;
+    width: 50%;
 }
 
-.profile-container .profile-picture input[type="file"] {
+.container .profile-container .profile-picture input[type="file"] {
     visibility: hidden;
 }
 
-.profile-container .info {
-    margin-right: 10%;
-    width: 20%;
+.container .profile-container #full-name {
+    padding-top: 1.2rem;
+    font-family: "Raleway", sans-serif;
 }
 
-.profile-container .info .detail {
-    margin: 2rem 0;
+.container .profile-container #email-address {
+    padding-top: 1rem;
+    font-family: "Lato", sans-serif;
 }
 
-.profile-container .info .detail div {
-    box-shadow: 0 0.3rem var(--primary-color);
+.container .profile-container section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
 }
 
-.profile-container .info .detail p {
-    padding-bottom: 0.2rem;
-}
-
-.profile-container .info .detail h2 {
-    padding: 0.8rem 0;
-    /* font-family: 'Lato', sans-serif; */
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.5rem;
-}
-
-.profile-container .info p {
-    font-family: 'Lato', sans-serif;
-    font-size: 1rem;
-}
-
-.profile-container .info .input-form label {
-    font-family: 'Lato', sans-serif;
+.container .profile-container section .input-form label {
+    font-family: "Lato", sans-serif;
     font-size: 1.3rem;
     font-weight: 700;
 }
 
-.profile-container .info .input-form input {
+.container .profile-container section .input-form input {
     margin-top: 0.8rem;
+    margin-bottom: 1rem;
     padding: 0.3rem;
-    width: 100%;
+    width: 80%;
     border-radius: 0.3rem;
     border: 0.1rem #aaa solid;
     outline: none;
 }
 
-.profile-container .info form button {
+.container .profile-container section form button {
     margin-top: 1rem;
 }
 
-.profile-container .info .render {
+.container .profile-container>button {
+    margin: 0.7rem 0;
     padding: 0.6rem;
-    width: 100%;
+    width: 30%;
     color: #fff;
     background-color: var(--primary-lighter-color);
     border: 0;
@@ -110,6 +95,14 @@
     cursor: pointer;
 }
 
-.profile-container .info .render:hover {
+.container .profile-container>.success {
+    background-color: rgb(10, 226, 10);
+}
+
+.container .profile-container>button:hover {
     background-color: var(--primary-hover-color);
+}
+
+.container .profile-container>.success:hover {
+    background-color: rgb(13, 211, 13);
 }
