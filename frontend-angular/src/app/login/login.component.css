@@ -14,6 +14,13 @@
     background-color: var(--primary-color);
 }
 
+.page_wrapper .left_side .logo {
+    font-family: "Lobster", cursive;
+    color: #fff;
+    font-size: 4rem;
+    cursor: pointer;
+}
+
 .page_wrapper .right_side {
     display: flex;
     justify-content: center;
@@ -21,13 +28,6 @@
     height: 100vh;
     width: 50vw;
     background-color: #fff;
-}
-
-.page_wrapper .left_side .logo {
-    font-family: "Lobster", cursive;
-    color: #fff;
-    font-size: 4rem;
-    cursor: pointer;
 }
 
 .page_wrapper .right_side .register_wrapper {
