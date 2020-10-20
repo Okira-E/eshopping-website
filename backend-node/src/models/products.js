@@ -16,8 +16,14 @@ const productSchema = new mongoose.Schema({
         type: String,
         maxlength: 400,
     },
+    image: {
+        required: true,
+        type: String,
+    }
 }, {
     timestamps: true,
 });
 
 const Product = mongoose.model("Product", productSchema);
+
+module.exports = Product;
