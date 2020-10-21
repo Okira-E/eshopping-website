@@ -91,7 +91,7 @@ export class UsersService {
       );
   }
 
-  public loginUser(user: User): void {
+  public loginUser(user: User, redirectPath: string): void {
     this.http
       .post<{ token: string }>(`${this.url}/api/users/login/`, user)
       .subscribe(
@@ -112,7 +112,36 @@ export class UsersService {
             now.getTime() + this.timeout * 1000
           );
           UsersService.saveTokenInLocalStorage(this.token, expiration);
-          this.router.navigate(['/']);
+          this.router.navigate([redirectPath]);
+        },
+        (err) => {
+          this.errorMessageListener.next('Unable to login');
+        }
+      );
+  }
+
+  public loginAdmin(user: User, redirectPath: string): void {
+    this.http
+      .post<{ token: string }>(`${this.url}/api/admin/login/`, user)
+      .subscribe(
+        (res: { token: string }) => {
+          this.token = res.token;
+          this.isAuthenticated = true;
+          this.authStatusListener.next(true);
+          this.tokenTimer = setTimeout(() => {
+            this.token = null;
+            this.isAuthenticated = false;
+            this.authStatusListener.next(false);
+            window.alert('Your session has expired, please sign in again');
+            this.logout();
+            this.router.navigate(['/login']);
+          }, this.timeout * 1000);
+          const now: Date = new Date();
+          const expiration: Date = new Date(
+            now.getTime() + this.timeout * 1000
+          );
+          UsersService.saveTokenInLocalStorage(this.token, expiration);
+          this.router.navigate([redirectPath]);
         },
         (err) => {
           this.errorMessageListener.next('Unable to login');
