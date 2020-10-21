@@ -40,12 +40,35 @@ router.post("/api/users/register", async(req, res) => {
     }
 });
 
+router.post("/api/admin/register", async(req, res) => {
+    try {
+        const newUser = await new User({...req.body, isAdmin: true }).save();
+        const token = await newUser.generateToken();
+        res.status(201).send({ token });
+    } catch (e) {
+        res.status(500).send({ error: e });
+    }
+});
+
 router.post("/api/users/login", async(req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
     try {
         const user = await User.findByCredentials(email, password);
+        const token = await user.generateToken();
+        res.status(200).send({ token });
+    } catch {
+        res.status(500).send("Unable to login");
+    }
+});
+
+router.post("/api/admin/login", async(req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    try {
+        const user = await User.findAdminByCredentials(email, password);
         const token = await user.generateToken();
         res.status(200).send({ token });
     } catch {
@@ -84,6 +107,20 @@ router.get("/api/users/getdata", auth, (req, res) => {
         res.status(500).send();
     }
 });
+
+router.get("/api/admin/validate", auth, async(req, res) => {
+    const user = req.user;
+
+    try {
+        const admin = await User.findOne({_id: user._id, isAdmin: true});
+        if (!admin) {
+            throw new Error();
+        }
+        res.status(200).send({});
+    } catch {
+        res.status(403).send();
+    } 
+})
 
 // PATCH /////////////////////////////////////////////////////////
 
