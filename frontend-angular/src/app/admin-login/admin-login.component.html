@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="header">
+    <div class="logo">
+      Admin Panel
+    </div>
+    <div class="empty">
+    </div>
+  </div>
+  <div class="login">
+    <!-- <div class="login-wrapper"> -->
+      <form class="register_wrapper" (ngSubmit)="onLogin(input)" #input="ngForm">
+        <h2 id="heading">Enter as Admin</h2>
+        <p class="error_message">{{ errorMessage }}</p>
+        <div class="form_input">
+          <label for="email">Email Address</label>
+          <input
+            ngModel
+            required
+            type="email"
+            name="email"
+            id="email"
+            placeholder="example@email.com"
+          />
+        </div>
+        <div class="form_input">
+          <label for="pass">Password</label>
+          <input
+            ngModel
+            required
+            minlength="8"
+            type="password"
+            name="pass"
+            id="pass"
+            placeholder="Password should be at least 8 characters"
+          />
+        </div>
+        <button>Enter</button>
+      </form>
+    <!-- </div> -->
+  </div>
+</div>

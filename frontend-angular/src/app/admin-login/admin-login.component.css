@@ -1,0 +1,125 @@
+.container {
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.container .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8vh;
+  background-color: #fff;
+  box-shadow: 0 0.7rem var(--primary-color);
+}
+
+.container .header .logo {
+  margin-left: 3rem;
+  font-size: 3rem;
+  font-family: "Lato", sans-serif;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.container .header .empty {
+  margin-right: 3rem;
+}
+
+.container .header .empty i {
+  padding: 0.8rem;
+  color: var(--primary-color);
+  font-size: 2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.container .header .empty i:hover {
+  color: #fff;
+  background-color: var(--primary-color);
+}
+
+
+.container .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 92vh;
+}
+
+/* .container .login .login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20rem;
+  min-width: 30rem;
+  margin-bottom: 10rem;
+  border: 0.12rem var(--primary-color) solid;
+} */
+
+.register_wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10rem;
+  height: 20rem;
+  width: 25rem;
+  border: 1px var(--primary-color) solid;
+}
+
+.register_wrapper #heading {
+  margin: 1.2rem auto;
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.register_wrapper .form_input {
+  margin-left: 0.8rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+.register_wrapper .form_input label {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.register_wrapper .form_input input {
+  margin-top: 0.4rem;
+  padding: 0.4rem;
+  width: 92%;
+  border-radius: 0.3rem;
+  border: 0.1rem #aaa solid;
+  outline: none;
+}
+
+.register_wrapper button {
+  margin: auto;
+  margin-bottom: 1rem;
+  width: 90%;
+  padding: 0.7rem;
+  color: #fff;
+  background-color: var(--primary-lighter-color);
+  border-radius: 0.3rem;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.register_wrapper button:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.register_wrapper p {
+  margin: auto;
+  font-size: 1rem;
+}
+
+.register_wrapper p a {
+  color: rgb(1, 140, 178);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.register_wrapper p a:hover {
+  color: rgb(2, 168, 214);
+}
