@@ -1,0 +1,44 @@
+.container {
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.container .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8vh;
+  background-color: #fff;
+  box-shadow: 0 0.7rem var(--primary-color);
+}
+
+.container .header .logo {
+  margin-left: 3rem;
+  font-size: 3rem;
+  font-family: "Lato", sans-serif;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.container .header .empty {
+  margin-right: 3rem;
+}
+
+.container .header .empty i {
+  padding: 0.8rem;
+  color: var(--primary-color);
+  font-size: 2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.container .header .empty i:hover {
+  color: #fff;
+  background-color: var(--primary-color);
+}
+
+
+.container .dashboard {
+  height: 92vh;
+}
+
