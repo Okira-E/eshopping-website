@@ -50,6 +50,11 @@ const userSchema = new mongoose.Schema({
             type: String,
         },
     }, ],
+    isAdmin: {
+        type: Boolean,
+        default: false,
+        required: false
+    },
 }, {
     timestamps: true,
 });
@@ -76,6 +81,22 @@ userSchema.statics.findByCredentials = async(email, password) => {
 
     return user;
 };
+
+userSchema.statics.findAdminByCredentials = async(email, password) => {
+    const user = await User.findOne({ email , isAdmin: true});
+
+    if (!user) {
+        throw new Error("Unable to login!");
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+        throw new Error("Unable to login!");
+    }
+
+    return user;
+}
 
 userSchema.methods.generateToken = async function() {
     const token = jwt.sign({ id: this._id.toString() },
