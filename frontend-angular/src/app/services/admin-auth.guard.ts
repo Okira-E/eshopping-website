@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AdminAuthGuard implements CanActivate {
-  private isAdmin: boolean = false;
+  private isAdmin: boolean;
 
   constructor(
     private usersService: UsersService,
@@ -31,19 +31,18 @@ export class AdminAuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     this.http.get(this.usersService.url + '/api/admin/validate').subscribe(
-      (res) => {
+      (_res) => {
         this.isAdmin = true;
       },
-      (err) => {
+      (_err) => {
         this.isAdmin = false;
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/login']);
       }
     );
 
     if (!this.isAdmin) {
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/login']);
     }
-    console.log(this.isAdmin);
     return this.isAdmin;
   }
 }
