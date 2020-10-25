@@ -1,6 +1,15 @@
 .error_message {
     margin: 0 auto;
-    color: #f00;
+    padding: 0.4rem;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+#disappear {
+  visibility: hidden;
+  color: #000;
 }
 
 .page_wrapper {
@@ -42,7 +51,7 @@
     border: 1px black solid;
     height: 37rem;
     width: 25rem;
-    box-shadow: 1.7rem 1.2rem rgb(3, 145, 205);
+    box-shadow: 1.7rem 1.2rem rgb(2, 164, 233);
     border: 1px var(--primary-color) solid;
 }
 

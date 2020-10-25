@@ -10,6 +10,7 @@ import { User } from '../models/users';
 })
 export class LoginComponent implements OnInit {
   public errorMessage: string = '';
+  public errMsgId: string = 'disappear';
 
   constructor(private usersService: UsersService) {}
 
@@ -23,12 +24,14 @@ export class LoginComponent implements OnInit {
 
     if (user.email === '' || user.password === '') {
       this.errorMessage = 'All fields are required';
+      this.errMsgId = '';
       return;
     }
 
-    this.usersService.loginUser(user, "/");
+    this.usersService.loginUser(user, '/');
     this.usersService.getErrorMessage().subscribe((errMsg) => {
       this.errorMessage = errMsg;
+      this.errMsgId = '';
     });
   }
 }

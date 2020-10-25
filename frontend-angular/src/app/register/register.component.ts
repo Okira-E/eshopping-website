@@ -10,7 +10,8 @@ import { UsersService } from '../services/users.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  public errorMessage: string = '';
+  public errorMessage: string = 'Welcome';
+  public errMsgId: string = 'disappear';
 
   constructor(private usersService: UsersService) {}
 
@@ -30,15 +31,18 @@ export class RegisterComponent implements OnInit {
       form.value.password === ''
     ) {
       this.errorMessage = 'All fields are required';
+      this.errMsgId = '';
       return;
     } else if (form.invalid) {
       this.errorMessage = 'Password should be at least 8 characters long';
+      this.errMsgId = '';
       return;
     }
 
     this.usersService.registerUser(user);
     this.usersService.getErrorMessage().subscribe((errMsg) => {
       this.errorMessage = errMsg;
+      this.errMsgId = '';
     });
   }
 }

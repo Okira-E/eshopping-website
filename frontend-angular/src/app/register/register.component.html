@@ -5,7 +5,7 @@
     <div class="right_side">
         <form class="register_wrapper" (ngSubmit)="onRegister(input)" #input="ngForm">
             <h2 id="heading">Sign Up</h2>
-            <p class="error_message">{{ errorMessage }}</p>
+            <p class="error_message" id="{{errMsgId}}">{{ errorMessage }}</p>
             <div class="form_input">
                 <label for="fname">First Name</label>
                 <input ngModel required type="text" name="fname" id="fname" placeholder="Bruce" />

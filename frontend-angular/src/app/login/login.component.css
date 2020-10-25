@@ -1,3 +1,17 @@
+.error_message {
+  margin: 0 auto;
+  padding: 0.4rem;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  background-color: var(--primary-color);
+  border-radius: 3px;
+}
+
+#disappear {
+visibility: hidden;
+color: #000;
+}
+
 .page_wrapper {
     display: flex;
     box-sizing: border-box;
@@ -36,12 +50,12 @@
     border: 1px black solid;
     height: 26rem;
     width: 25rem;
-    box-shadow: 1.7rem 1.2rem rgb(3, 145, 205);
+    box-shadow: 1.7rem 1.2rem rgb(2, 164, 233);
     border: 1px var(--primary-color) solid;
 }
 
 .page_wrapper .right_side .register_wrapper #heading {
-    margin: 1.2rem auto;
+    margin: 1rem auto;
     color: rgb(0, 151, 215);
     font-family: 'Lato', sans-serif;
     font-weight: lighter;
@@ -50,7 +64,7 @@
 
 .page_wrapper .right_side .register_wrapper .form_input {
     margin-left: 0.8rem;
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
     padding: 0.5rem;
     box-sizing: border-box;
     font-family: "Lato", sans-serif;
@@ -71,7 +85,7 @@
 }
 
 .page_wrapper .right_side .register_wrapper button {
-    margin: 2.3rem auto;
+    margin: 2.1rem auto;
     margin-bottom: 0;
     width: 89%;
     padding: 0.7rem;
@@ -88,7 +102,7 @@
 }
 
 .page_wrapper .right_side .register_wrapper p {
-    margin: auto;
+    margin: auto auto 1rem auto;
     font-size: 1rem;
 }
 

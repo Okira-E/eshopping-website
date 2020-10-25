@@ -5,7 +5,7 @@
   <div class="right_side">
     <form class="register_wrapper" (ngSubmit)="onLogin(input)" #input="ngForm">
       <h2 id="heading">Sign In</h2>
-      <p class="error_message">{{ errorMessage }}</p>
+      <p class="error_message" id="{{errMsgId}}">{{ errorMessage }}</p>
       <div class="form_input">
         <label for="email">Email Address</label>
         <input

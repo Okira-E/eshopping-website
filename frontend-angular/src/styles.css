@@ -35,8 +35,3 @@
 .danger:hover {
     background-color: rgb(192, 13, 13);
 }
-
-.error_message {
-    margin: 0 auto;
-    color: #f00;
-}
