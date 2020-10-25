@@ -34,7 +34,7 @@
     display: flex;
     flex-direction: column;
     border: 1px black solid;
-    height: 25rem;
+    height: 26rem;
     width: 25rem;
     box-shadow: 1.7rem 1.2rem rgb(3, 145, 205);
     border: 1px var(--primary-color) solid;
@@ -43,6 +43,8 @@
 .page_wrapper .right_side .register_wrapper #heading {
     margin: 1.2rem auto;
     color: rgb(0, 151, 215);
+    font-family: 'Lato', sans-serif;
+    font-weight: lighter;
     font-size: 2rem;
 }
 
