@@ -1,37 +1,54 @@
 * {
-    margin: 0;
-    padding: 0;
-    --primary-color: rgb(0, 179, 255);
-    --primary-lighter-color: rgb(0, 200, 255);
-    --primary-hover-color: rgb(6, 184, 233);
+  margin: 0;
+  padding: 0;
+  --primary-color: rgb(0, 179, 255);
+  --primary-lighter-color: rgb(0, 200, 255);
+  --primary-hover-color: rgb(6, 184, 233);
 }
 
 .success {
-    padding: 0.6rem;
-    width: 70%;
-    color: #fff;
-    background-color: rgb(39, 214, 39);
-    border: 0;
-    border-radius: 0.3rem;
-    outline: none;
-    cursor: pointer;
+  padding: 0.6rem;
+  width: 70%;
+  color: #fff;
+  background-color: rgb(39, 214, 39);
+  border: 0;
+  border-radius: 0.3rem;
+  outline: none;
+  cursor: pointer;
 }
 
 .success:hover {
-    background-color: rgb(36, 176, 36);
+  background-color: rgb(36, 176, 36);
 }
 
 .danger {
-    padding: 0.6rem;
-    width: 70%;
-    color: #fff;
-    background-color: #f00;
-    border: 0;
-    border-radius: 0.3rem;
-    outline: none;
-    cursor: pointer;
+  padding: 0.6rem;
+  width: 70%;
+  color: #fff;
+  background-color: #f00;
+  border: 0;
+  border-radius: 0.3rem;
+  outline: none;
+  cursor: pointer;
 }
 
 .danger:hover {
-    background-color: rgb(192, 13, 13);
+  background-color: rgb(192, 13, 13);
+}
+
+.primary-button {
+  margin: 0.7rem 0.2rem;
+  padding: 0.6rem;
+  width: 70%;
+  color: #fff;
+  background-color: #000;
+  border: 0;
+  border-radius: 0.3rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  background-color: #333;
+  cursor: pointer;
 }
