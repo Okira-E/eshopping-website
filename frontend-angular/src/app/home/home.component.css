@@ -16,13 +16,14 @@
 
 .container .my-cart-container .my-cart-card {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 7rem;
+  flex-direction: column;
+  margin-bottom: 8rem;
+  height: 34rem;
   width: 25rem;
-  height: 33rem;
-  border: 0.1rem #35B3FF solid;
   background-color: #fff;
+  box-shadow: 0 0 1rem 0.2rem #ccc;
+  border: 1px #e1e1e1 solid;
+  border-radius: 1rem;
 }
 
 .container .store-container {
