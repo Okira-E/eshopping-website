@@ -3,6 +3,7 @@
         Modern Store
     </h1>
     <ul class="navigation">
+        <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</li>
         <li routerLink="/profile" routerLinkActive="active">Profile</li>
         <li (click)="logout()">Logout</li>
     </ul>

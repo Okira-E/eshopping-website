@@ -5,28 +5,34 @@
 
 .container .header {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
-  height: 8vh;
+  align-items: center;
+  padding: 0 10rem;
+  min-height: 8vh;
+  max-height: 8vh;
   background-color: #fff;
-  box-shadow: 0 0.7rem var(--primary-color);
+  border: 1px #e1e1e1 solid;
+  box-shadow: 0 0 1rem 0.2rem #ccc;
+  box-sizing: border-box;
 }
 
 .container .header .logo {
-  margin-left: 3rem;
+  color: #000;
+  font-family: "Lobster", cursive;
   font-size: 3rem;
-  font-family: "Lato", sans-serif;
-  color: var(--primary-color);
+  font-weight: lighter;
+  outline: none;
   cursor: pointer;
 }
 
 .container .header .empty {
-  margin-right: 3rem;
+  margin-right: 2rem;
 }
 
 .container .header .empty i {
   padding: 0.8rem;
-  color: var(--primary-color);
+  color: #000;
   font-size: 2rem;
   border-radius: 0.4rem;
   cursor: pointer;
@@ -34,11 +40,10 @@
 
 .container .header .empty i:hover {
   color: #fff;
-  background-color: var(--primary-color);
+  background-color: #000;
 }
-
 
 .container .dashboard {
   height: 92vh;
+  background-color: #f5f5f5;
 }
-

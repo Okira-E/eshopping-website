@@ -5,38 +5,30 @@
 
 .container .header {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
-  height: 8vh;
+  align-items: center;
+  padding: 0 10rem;
+  min-height: 8vh;
+  max-height: 8vh;
   background-color: #fff;
-  box-shadow: 0 0.7rem var(--primary-color);
+  border: 1px #e1e1e1 solid;
+  box-shadow: 0 0 1rem 0.2rem #ccc;
+  box-sizing: border-box;
 }
 
 .container .header .logo {
-  margin-left: 3rem;
+  color: #000;
+  font-family: "Lobster", cursive;
   font-size: 3rem;
-  font-family: "Lato", sans-serif;
-  color: var(--primary-color);
+  font-weight: lighter;
+  outline: none;
   cursor: pointer;
 }
 
 .container .header .empty {
   margin-right: 3rem;
 }
-
-.container .header .empty i {
-  padding: 0.8rem;
-  color: var(--primary-color);
-  font-size: 2rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-}
-
-.container .header .empty i:hover {
-  color: #fff;
-  background-color: var(--primary-color);
-}
-
 
 .container .login {
   display: flex;
@@ -45,29 +37,25 @@
   height: 92vh;
 }
 
-/* .container .login .login-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 20rem;
-  min-width: 30rem;
-  margin-bottom: 10rem;
-  border: 0.12rem var(--primary-color) solid;
-} */
-
 .register_wrapper {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10rem;
-  height: 20rem;
+  height: 22rem;
   width: 25rem;
-  border: 1px var(--primary-color) solid;
+  margin-bottom: 10rem;
+  background-color: #fff;
+  border: 1px #e1e1e1 solid;
+  box-shadow: 0 0 1rem 0.2rem #ccc;
+  border-radius: 1rem;
 }
 
 .register_wrapper #heading {
   margin: 1.2rem auto;
-  color: var(--primary-color);
+  color: #000;
+  font-family: "Lato", sans-serif;
+  font-weight: lighter;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .register_wrapper .form_input {
@@ -93,12 +81,12 @@
 }
 
 .register_wrapper button {
-  margin: auto;
-  margin-bottom: 1rem;
+  margin: 1rem auto;
+  margin-bottom: 1.5rem;
   width: 90%;
   padding: 0.7rem;
   color: #fff;
-  background-color: var(--primary-lighter-color);
+  background-color: #000;
   border-radius: 0.3rem;
   border: 0;
   outline: none;
@@ -106,7 +94,7 @@
 }
 
 .register_wrapper button:hover {
-  background-color: var(--primary-hover-color);
+  background-color: #333;
 }
 
 .register_wrapper p {
