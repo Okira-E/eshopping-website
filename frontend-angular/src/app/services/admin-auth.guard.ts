@@ -22,27 +22,21 @@ export class AdminAuthGuard implements CanActivate {
     private router: Router
   ) {}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    this.http.get(this.usersService.url + '/api/admin/validate').subscribe(
-      (_res) => {
-        this.isAdmin = true;
-      },
-      (_err) => {
-        this.isAdmin = false;
-        this.router.navigate(['/login']);
-      }
-    );
-
-    if (!this.isAdmin) {
-      this.router.navigate(['/admin']);
-    }
+  async canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    await this.http
+      .get(this.usersService.url + '/api/admin/validate')
+      .subscribe(
+        (_res) => {
+          this.isAdmin = true;
+          return true;
+        },
+        (_err) => {
+          this.isAdmin = false;
+          this.router.navigate(['/login']);
+          return false;
+        }
+      );
     return this.isAdmin;
+    // this.router.navigate(['/admin']);
   }
 }
