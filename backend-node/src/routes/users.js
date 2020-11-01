@@ -30,9 +30,9 @@ const storage = multer.diskStorage({
 
 // POST REQUESTS ////////////////////////////////////////////////////////////////////
 
-router.post("/api/users/register", async(req, res) => {
+router.post("/api/users/register", async (req, res) => {
     try {
-        const newUser = await new User({...req.body }).save();
+        const newUser = await new User({ ...req.body }).save();
         const token = await newUser.generateToken();
         res.status(201).send({ token });
     } catch (e) {
@@ -40,9 +40,9 @@ router.post("/api/users/register", async(req, res) => {
     }
 });
 
-router.post("/api/admin/register", async(req, res) => {
+router.post("/api/admin/register", async (req, res) => {
     try {
-        const newUser = await new User({...req.body, isAdmin: true }).save();
+        const newUser = await new User({ ...req.body, isAdmin: true }).save();
         const token = await newUser.generateToken();
         res.status(201).send({ token });
     } catch (e) {
@@ -50,7 +50,7 @@ router.post("/api/admin/register", async(req, res) => {
     }
 });
 
-router.post("/api/users/login", async(req, res) => {
+router.post("/api/users/login", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
@@ -63,7 +63,7 @@ router.post("/api/users/login", async(req, res) => {
     }
 });
 
-router.post("/api/admin/login", async(req, res) => {
+router.post("/api/admin/login", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
@@ -77,15 +77,20 @@ router.post("/api/admin/login", async(req, res) => {
 });
 
 router.post(
-    "/api/users/updateprofilepicture", [auth, multer({ storage }).single("image")], async(req, res) => {
+    "/api/users/updateprofilepicture",
+    [auth, multer({ storage }).single("image")],
+    async (req, res) => {
         const user = req.user;
 
         const serverUrl = req.protocol + "://" + req.get("host");
         const imagePath = serverUrl + "/images/" + req.file.filename;
         try {
-            await User.updateOne({ _id: user._id }, {
-                profilePic: imagePath,
-            });
+            await User.updateOne(
+                { _id: user._id },
+                {
+                    profilePic: imagePath,
+                }
+            );
             await user.save();
 
             res.status(200).send();
@@ -108,23 +113,23 @@ router.get("/api/users/getdata", auth, (req, res) => {
     }
 });
 
-router.get("/api/admin/validate", auth, async(req, res) => {
+router.get("/api/admin/validate", auth, async (req, res) => {
     const user = req.user;
 
     try {
-        const admin = await User.findOne({_id: user._id, isAdmin: true});
+        const admin = await User.findOne({ _id: user._id, isAdmin: true });
         if (!admin) {
             throw new Error();
         }
         res.status(200).send({});
     } catch {
         res.status(403).send();
-    } 
-})
+    }
+});
 
 // PATCH /////////////////////////////////////////////////////////
 
-router.patch("/api/users/updatepassword", auth, async(req, res) => {
+router.patch("/api/users/updatepassword", auth, async (req, res) => {
     const user = req.user;
     const oldPassword = req.body.oldPassword;
     const newPassword = req.body.newPassword;
@@ -142,7 +147,7 @@ router.patch("/api/users/updatepassword", auth, async(req, res) => {
 });
 
 // DELETE REQUESTS ///////////////////////////////////////////////////////////////////
-router.delete("/api/users/me", auth, async(req, res) => {
+router.delete("/api/users/me", auth, async (req, res) => {
     const user = req.user;
 
     try {
