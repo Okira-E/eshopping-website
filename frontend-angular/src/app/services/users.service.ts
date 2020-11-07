@@ -19,6 +19,12 @@ export class UsersService {
   private errorMessageListener = new BehaviorSubject<string>(this.errorMessage);
   private currentErrorMessage = this.errorMessageListener.asObservable();
 
+  private passwordChangeErrorMessage: string = '';
+  private passwordChangeErrorMessageListener = new BehaviorSubject<string>(
+    this.passwordChangeErrorMessage
+  );
+  private currentPasswordChangeErrorMessage = this.passwordChangeErrorMessageListener.asObservable();
+
   constructor(private http: HttpClient, private router: Router) {}
 
   // Statics
@@ -114,7 +120,7 @@ export class UsersService {
           UsersService.saveTokenInLocalStorage(this.token, expiration);
           this.router.navigate([redirectPath]);
         },
-        (err) => {
+        (_err) => {
           this.errorMessageListener.next('Unable to login');
         }
       );
@@ -143,7 +149,7 @@ export class UsersService {
           UsersService.saveTokenInLocalStorage(this.token, expiration);
           this.router.navigate([redirectPath]);
         },
-        (err) => {
+        (_err) => {
           this.errorMessageListener.next('Unable to login');
         }
       );
@@ -165,11 +171,18 @@ export class UsersService {
   }
 
   public updatePassword(user: { oldPassword: string; newPassword: string }) {
-    this.http
-      .patch(this.url + '/api/users/updatepassword', user)
-      .subscribe((res) => {
+    this.http.patch(this.url + '/api/users/updatepassword', user).subscribe(
+      (_res) => {
         this.logout();
-      });
+      },
+      (_err) => {
+        this.passwordChangeErrorMessageListener.next(
+          'Current password is incorrect'
+        );
+      }
+    );
+
+    return this.currentPasswordChangeErrorMessage;
   }
 
   public autoAuthUser() {

@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   public lastName: string = '';
   public email: string = '';
   public profilePic: string;
+  public passwordChangeErrorMessage: string = '';
 
   public form: FormGroup;
 
@@ -53,6 +54,7 @@ export class ProfileComponent implements OnInit {
 
   public toggleRenderPasswordChange() {
     this.onPasswordChange = !this.onPasswordChange;
+    this.passwordChangeErrorMessage = '';
   }
 
   public toggleRenderImageSection() {
@@ -75,7 +77,14 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    this.usersService.updatePassword({ oldPassword, newPassword });
+    this.usersService
+      .updatePassword({
+        oldPassword,
+        newPassword,
+      })
+      .subscribe((errorMessage: string) => {
+        this.passwordChangeErrorMessage = errorMessage;
+      });
   }
 
   public onChangeProfilePicture(event: Event) {
