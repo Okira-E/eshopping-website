@@ -1,0 +1,212 @@
+.container {
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.container .dashboard {
+  display: flex;
+  height: 92vh;
+  background-color: #f5f5f5;
+}
+
+.container .dashboard .left-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+.container .dashboard .left-side .left-side-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12rem;
+  height: 12rem;
+  width: 15rem;
+  background-color: #fff;
+  box-shadow: 0 0 0.6rem 0.1rem #ccc;
+  border: 1px #e1e1e1 solid;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+}
+
+.container .dashboard .left-side .left-side-wrapper .left-side-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+  border-bottom: 0.2rem solid #000;
+}
+
+.container .dashboard .left-side .left-side-wrapper .left-side-header h2 {
+  font-family: "Lato", sans-serif;
+  font-size: 2rem;
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+.container .dashboard .left-side .left-side-wrapper ul {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+}
+
+.container .dashboard .left-side .left-side-wrapper ul li {
+  margin-top: 0.2rem;
+  padding: 0.4rem;
+  width: 50%;
+  font-family: "Lato", sans-serif;
+  font-size: 1.5rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.container .dashboard .left-side .left-side-wrapper ul li:hover {
+  color: #fff;
+  background-color: #000;
+  border-radius: 0.4rem;
+}
+
+.container .dashboard .right-side {
+  flex: 4;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container .dashboard .right-side .right-side-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  height: 85%;
+  width: 85%;
+  background-color: #fff;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 0.6rem 0.1rem #ccc;
+  border: 1px #e1e1e1 solid;
+}
+
+.container .dashboard .right-side .right-side-wrapper .table-header {
+  flex: 1;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  font-family: "Lato", sans-serif;
+  font-size: 2.5rem;
+  border-bottom: 0.2rem solid #000;
+  cursor: pointer;
+}
+
+.container .dashboard .right-side .right-side-wrapper .table-columns {
+  display: flex;
+  margin-left: 1.7rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-right: 2rem;
+  justify-content: space-between;
+}
+
+.container .dashboard .right-side .right-side-wrapper .table-columns p {
+  font-family: "Lato", sans-serif;
+  font-size: 1.2rem;
+  border-bottom: 0.1rem solid #444;
+}
+
+.container .dashboard .right-side .right-side-wrapper .table-data {
+  flex: 11;
+}
+
+.container .dashboard .right-side .right-side-wrapper .table-data .center {
+  display: flex;
+  justify-content: center;
+}
+
+.container
+  .dashboard
+  .right-side
+  .right-side-wrapper
+  .table-data
+  .center
+  .load-more {
+  margin: auto 0.6rem;
+  padding: 0.6rem;
+  background-color: #fff;
+  color: #000;
+  border: solid #000 0.1rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.container
+  .dashboard
+  .right-side
+  .right-side-wrapper
+  .table-data
+  .center
+  .load-more:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.container
+  .dashboard
+  .right-side
+  .right-side-wrapper
+  .table-data
+  .center
+  .load-more
+  p {
+  font-size: 1rem;
+}
+
+.container .dashboard .right-side .right-side-wrapper .table-data .row {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 1rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  margin-right: 2rem;
+}
+
+.container .dashboard .right-side .right-side-wrapper .table-data .row i {
+  padding-right: 1.7rem;
+}
+
+.container .dashboard .right-side .right-side-wrapper .table-data .row:hover {
+  color: #fff;
+  background-color: #000;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.container .dashboard .right-side .right-side-wrapper .table-data .row p {
+  padding: 0.4rem 1.7rem 0.4rem 0.4rem;
+  font-family: "Lato", sans-serif;
+  font-size: 1.2rem;
+}
+
+.container .dashboard .right-side .right-side-wrapper .options {
+  flex: 1;
+}
+
+.container .dashboard .right-side .right-side-wrapper .options .create-user {
+  float: right;
+  margin: 0.8rem 1.6rem;
+  padding: 0.7rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.6rem;
+}
+
+.container
+  .dashboard
+  .right-side
+  .right-side-wrapper
+  .options
+  .create-user:hover {
+  background-color: #122222;
+}
+
+.container .dashboard .right-side .right-side-wrapper .options button p {
+  font-size: 1.2rem;
+}

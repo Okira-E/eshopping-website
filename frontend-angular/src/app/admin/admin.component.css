@@ -1,8 +1,3 @@
-.container {
-  box-sizing: border-box;
-  height: 100vh;
-}
-
 .container .header {
   display: flex;
   flex-direction: row;
@@ -41,9 +36,4 @@
 .container .header .empty i:hover {
   color: #fff;
   background-color: #000;
-}
-
-.container .dashboard {
-  height: 92vh;
-  background-color: #f5f5f5;
 }

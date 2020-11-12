@@ -35,7 +35,7 @@
 .container .profile-container .profile-picture img {
   margin-top: 3.5rem;
   min-width: 10rem;
-  max-width: 10rem;
+  max-height: 10rem;
   border-radius: 5%;
 }
 
