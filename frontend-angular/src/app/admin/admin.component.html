@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="header">
+    <div class="logo">
+      Admin Panel
+    </div>
+    <div class="empty">
+      <i class="fas fa-door-open" (click)="logout()"></i>
+    </div>
+  </div>
+  <app-admin-dashboard *ngIf="!isEdit" (isEditEvent)="toggleIsEdit($event)" (userEdit)="recieveUser($event)"></app-admin-dashboard>
+  <app-admin-user *ngIf="isEdit" [user]="user" (isEditEvent)="toggleIsEdit($event)"></app-admin-user>
+</div>
