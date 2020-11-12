@@ -10,6 +10,7 @@ import { User } from './../models/users';
 })
 export class AdminComponent implements OnInit {
   public isEdit: boolean = false;
+  public isCreateUser: boolean = false;
   public user: User;
 
   constructor(private usersService: UsersService) {}
@@ -18,6 +19,10 @@ export class AdminComponent implements OnInit {
 
   public toggleIsEdit($event) {
     this.isEdit = $event;
+  }
+
+  public toggleCreateUser($event) {
+    this.isCreateUser = $event;
   }
 
   public recieveUser($event) {
