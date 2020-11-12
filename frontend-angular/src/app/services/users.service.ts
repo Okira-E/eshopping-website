@@ -68,7 +68,7 @@ export class UsersService {
     return this.authStatusListener.asObservable();
   }
 
-  public registerUser(user: User) {
+  public registerUser(user: User, redirectPath: string) {
     this.http
       .post<{ token: string }>(`${this.url}/api/users/register/`, user)
       .subscribe(
@@ -89,12 +89,18 @@ export class UsersService {
             now.getTime() + this.timeout * 1000
           );
           UsersService.saveTokenInLocalStorage(this.token, expiration);
-          this.router.navigate(['/']);
+          this.router.navigate([redirectPath]);
         },
-        (err) => {
+        (_err) => {
           this.errorMessageListener.next('Email has already been used');
         }
       );
+  }
+
+  public registerUserFromAdmin(user: User) {
+    this.http
+      .post<{ token: string }>(`${this.url}/api/users/register/`, user)
+      .subscribe();
   }
 
   public loginUser(user: User, redirectPath: string): void {
