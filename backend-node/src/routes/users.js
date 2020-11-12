@@ -159,13 +159,12 @@ router.patch("/api/users/updatepassword", auth, async (req, res) => {
 });
 
 // DELETE REQUESTS ///////////////////////////////////////////////////////////////////
-router.delete("/api/users/me", auth, async (req, res) => {
-    const user = req.user;
-
+router.post("/api/users/delete", auth, async (req, res) => {
     try {
-        await User.deleteOne(user);
+        await User.deleteOne({ email: req.body.email });
         res.status(200).send();
-    } catch {
+    } catch (e) {
+        console.log(e);
         res.status(500).send();
     }
 });
