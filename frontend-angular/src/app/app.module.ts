@@ -18,6 +18,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminUserComponent } from './admin/admin-user/admin-user.component';
+import { AdminAddUserComponent } from './admin/admin-add-user/admin-add-user.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
     AdminDashboardComponent,
     AdminComponent,
     AdminUserComponent,
+    AdminAddUserComponent,
   ],
   imports: [
     BrowserModule,
