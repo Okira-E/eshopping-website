@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.usersService.registerUser(user);
+    this.usersService.registerUser(user, '/');
     this.usersService.getErrorMessage().subscribe((errMsg) => {
       this.errorMessage = errMsg;
       this.errMsgId = '';
