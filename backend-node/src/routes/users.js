@@ -127,6 +127,18 @@ router.get("/api/admin/validate", auth, async (req, res) => {
     }
 });
 
+// Pagination applied
+router.get("/api/admin/getUsers", auth, async (req, res) => {
+    try {
+        const users = await User.find()
+            .skip(parseInt(req.query.skip))
+            .limit(12);
+        res.send(users);
+    } catch {
+        res.status(500).send();
+    }
+});
+
 // PATCH /////////////////////////////////////////////////////////
 
 router.patch("/api/users/updatepassword", auth, async (req, res) => {
