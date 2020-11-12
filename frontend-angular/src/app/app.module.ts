@@ -15,7 +15,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -25,9 +27,14 @@ const appRoutes: Routes = [
   { path: 'admin', component: AdminLoginComponent },
   {
     path: 'admin/dashboard',
-    component: AdminDashboardComponent,
+    component: AdminComponent,
     canActivate: [AdminAuthGuard],
   },
+  // {
+  //   path: 'admin/dashboard/user',
+  //   component: AdminDashboardUserComponent,
+  //   canActivate: [AdminAuthGuard],
+  // },
 ];
 
 @NgModule({
@@ -40,6 +47,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     AdminLoginComponent,
     AdminDashboardComponent,
+    AdminComponent,
+    AdminUserComponent,
   ],
   imports: [
     BrowserModule,
