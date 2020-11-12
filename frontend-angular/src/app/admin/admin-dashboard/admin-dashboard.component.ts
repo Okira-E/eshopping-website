@@ -18,6 +18,7 @@ export class AdminDashboardComponent implements OnInit {
   public user: User;
 
   @Output() private isEditEvent = new EventEmitter<boolean>();
+  @Output() private isCreateEvent = new EventEmitter<boolean>();
   @Output() private userEdit = new EventEmitter<User>();
   constructor(private usersService: UsersService, private http: HttpClient) {}
 
@@ -57,6 +58,10 @@ export class AdminDashboardComponent implements OnInit {
   public toggleEdit(user: User): void {
     this.isEditEvent.emit(true);
     this.userEdit.emit(user);
+  }
+
+  public toggleCreateUser(): void {
+    this.isCreateEvent.emit(true);
   }
 
   public logout(): void {
