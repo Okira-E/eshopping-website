@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="dashboard">
+    <div class="left-side">
+      <div class="left-side-wrapper">
+        <div class="left-side-header">
+          <h2>Tables</h2>
+        </div>
+        <ul>
+          <li (click)="toggleUsers()">Users</li>
+          <li (click)="toggleProducts()">Products</li>
+        </ul>
+      </div>
+    </div>
+    <div class="right-side">
+      <div class="right-side-wrapper">
+        <div class="table-header">
+          {{tableName}}
+        </div>
+        <div class="table-columns">
+          <p>Full Name</p>
+          <p>Email</p>
+          <p>Is Admin</p>
+        </div>
+        <div class="table-data">
+          <div class="row" *ngFor="let user of users" (click)="toggleEdit(user)">
+            <p>{{user.fullName}}</p>
+            <p>{{user.email}}</p>
+            <i *ngIf="user.isAdmin" class="fas fa-check"></i>
+            <i *ngIf="!user.isAdmin" class="fas fa-times"></i>
+          </div>
+          <div class="center">
+            <div class="buttons">
+              <button *ngIf="skip != 0" class="load-more" (click)="loadPreviousPage()"><p>Previous Page</p></button>
+              <button *ngIf="showLoadMore" class="load-more" (click)="loadNextPage()"><p>Next Page</p></button>
+            </div>
+          </div>
+          <!-- 12 -->
+        </div>
+        <div class="options">
+          <button class="create-user"><p>Create User</p></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
