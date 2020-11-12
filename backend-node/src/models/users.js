@@ -103,6 +103,16 @@ userSchema.statics.findAdminByCredentials = async (email, password) => {
     return user;
 };
 
+userSchema.statics.findAdminByEmail = async email => {
+    const user = await User.findOne({ email, isAdmin: true });
+
+    if (!user) {
+        throw new Error("Unable to login!");
+    }
+
+    return user;
+};
+
 userSchema.methods.generateToken = async function () {
     const token = jwt.sign(
         { id: this._id.toString() },
