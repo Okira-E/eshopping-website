@@ -185,6 +185,10 @@ export class UsersService {
     return this.currentPasswordChangeErrorMessage;
   }
 
+  public deleteUser(user: User) {
+    this.http.post(this.url + '/api/users/delete', user).subscribe();
+  }
+
   public autoAuthUser() {
     const authHeader = UsersService.getTokenFromLocalStorage();
     if (!authHeader) {
