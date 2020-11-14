@@ -33,7 +33,7 @@ export class AdminDashboardComponent implements OnInit {
           this.showLoadMore = false;
         }
         this.users = [];
-        for (let user of res) {
+        for (const user of res) {
           const { firstName, lastName, email, isAdmin } = user;
           this.users.push({
             fullName: firstName + ' ' + lastName,
