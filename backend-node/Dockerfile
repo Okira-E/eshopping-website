@@ -1,5 +1,5 @@
 FROM node:12-alpine
-LABEL name="okira-e"
+LABEL Author="okira-e"
 
 
 COPY package*.json ./
