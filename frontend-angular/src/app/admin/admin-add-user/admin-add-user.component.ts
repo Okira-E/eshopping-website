@@ -11,6 +11,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class AdminAddUserComponent implements OnInit {
   public errorMessage: string = '';
   public errMsgId: string = 'disappear';
+  public isAdminInput: boolean = false;
 
   @Output() private isCreateEvent = new EventEmitter<boolean>();
   constructor(private usersService: UsersService) {}
@@ -23,6 +24,7 @@ export class AdminAddUserComponent implements OnInit {
       lastName: form.value.lname,
       email: form.value.email,
       password: form.value.pass,
+      isAdmin: this.isAdminInput,
     };
     if (
       form.value.fname === '' ||
@@ -44,5 +46,10 @@ export class AdminAddUserComponent implements OnInit {
 
   public toggleCreateUser(): void {
     this.isCreateEvent.emit(false);
+    this.isCreateEvent.unsubscribe();
+  }
+
+  public toggleIsAdminInput(isAdmin: boolean) {
+    this.isAdminInput = isAdmin;
   }
 }

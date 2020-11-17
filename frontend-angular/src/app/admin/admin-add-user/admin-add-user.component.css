@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 10rem;
-  height: 32rem;
+  height: 39rem;
   width: 25rem;
   background-color: #fff;
   box-shadow: 0 0 0.6rem 0.1rem #ccc;
@@ -49,11 +49,41 @@
   outline: none;
 }
 
-.container .register_wrapper button {
+.container .register_wrapper div button {
+  margin: 1rem 0.3rem;
+  margin-bottom: 0.5rem;
+  width: 22%;
+  padding: 0.5rem;
+  color: #000;
+  background-color: #fff;
+  border-radius: 0.3rem;
+  border: 0.1rem #cac9c9 solid;
+  outline: none;
+  cursor: pointer;
+}
+
+.container .register_wrapper div .triggerd {
+  color: #fff;
+  background-color: #000;
+}
+
+.container .register_wrapper div button:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+.container .register_wrapper .submit {
+  display: flex;
   margin: 1.3rem auto;
   margin-bottom: 1rem;
   width: 89%;
+}
+
+.container .register_wrapper .submit button:first-child {
+  flex: 3.5;
   padding: 0.7rem;
+  margin-left: 0;
+  margin-right: 0;
   color: #fff;
   background-color: #000;
   border-radius: 0.3rem;
@@ -62,8 +92,23 @@
   cursor: pointer;
 }
 
-.container .register_wrapper button:hover {
+.container .register_wrapper .submit button {
+  flex: 1;
+  padding: 0.7rem;
+  color: #fff;
+  background-color: #f00;
+  border-radius: 0.3rem;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.container .register_wrapper .submit button:first-child:hover {
   background-color: #333;
+}
+
+.container .register_wrapper .submit button:hover {
+  background-color: #f00;
 }
 
 .container .register_wrapper p {

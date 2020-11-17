@@ -17,6 +17,16 @@
         <label for="pass">Password</label>
         <input ngModel required minlength="8" type="password" name="pass" id="pass" placeholder="Password should be at least 8 characters" />
     </div>
-    <button>Create</button>
+    <div class="form_input">
+      <label>Admin?</label>
+      <button class="triggerd" (click)="ngOnInit()" *ngIf="!isAdminInput">No</button>
+      <button *ngIf="isAdminInput" (click)="toggleIsAdminInput(false)">No</button>
+      <button class="triggerd" (click)="ngOnInit()" *ngIf="isAdminInput">Yes</button>
+      <button *ngIf="!isAdminInput" (click)="toggleIsAdminInput(true)">Yes</button>
+  </div>
+    <div class="submit">
+      <button>Create</button>
+      <button (click)="toggleCreateUser()">Cancel</button>
+    </div>
 </form>
 </div>
