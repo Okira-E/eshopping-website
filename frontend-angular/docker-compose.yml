@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  frontend:
+    build: .
+    container_name: "ecommerce-frontend"
+    command: "npm start"
+    volumes:
+      - .:/src
+    ports:
+      - "4200:4200"
