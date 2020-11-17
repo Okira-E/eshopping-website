@@ -3,11 +3,10 @@ version: "3"
 services:
   web:
     build: .
-    container_name: "eshopping-app-node"
+    container_name: "ecommerce-backend"
     command: "npm run dev"
     volumes:
       - .:/src
-      - node_modules
     ports:
       - "3200:3200"
     depends_on:
