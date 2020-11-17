@@ -76,10 +76,12 @@ export class UsersService {
           this.token = res.token;
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
+          this.authStatusListener.subscribe();
           this.tokenTimer = setTimeout(() => {
             this.token = null;
             this.isAuthenticated = false;
             this.authStatusListener.next(false);
+            this.authStatusListener.subscribe();
             window.alert('Your session has expired, please sign in again');
             this.logout();
             this.router.navigate(['/login']);
@@ -93,6 +95,7 @@ export class UsersService {
         },
         (_err) => {
           this.errorMessageListener.next('Email has already been used');
+          this.errorMessageListener.unsubscribe();
         }
       );
   }
@@ -111,10 +114,12 @@ export class UsersService {
           this.token = res.token;
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
+          this.authStatusListener.subscribe();
           this.tokenTimer = setTimeout(() => {
             this.token = null;
             this.isAuthenticated = false;
             this.authStatusListener.next(false);
+            this.authStatusListener.subscribe();
             window.alert('Your session has expired, please sign in again');
             this.logout();
             this.router.navigate(['/login']);
@@ -128,6 +133,7 @@ export class UsersService {
         },
         (_err) => {
           this.errorMessageListener.next('Unable to login');
+          this.errorMessageListener.unsubscribe();
         }
       );
   }
@@ -140,10 +146,12 @@ export class UsersService {
           this.token = res.token;
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
+          this.authStatusListener.subscribe();
           this.tokenTimer = setTimeout(() => {
             this.token = null;
             this.isAuthenticated = false;
             this.authStatusListener.next(false);
+            this.authStatusListener.subscribe();
             window.alert('Your session has expired, please sign in again');
             this.logout();
             this.router.navigate(['/login']);
@@ -157,6 +165,7 @@ export class UsersService {
         },
         (_err) => {
           this.errorMessageListener.next('Unable to login');
+          this.errorMessageListener.unsubscribe();
         }
       );
   }
@@ -171,6 +180,7 @@ export class UsersService {
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
+    this.authStatusListener.subscribe();
     UsersService.clearTokenInLocalStorage();
     clearTimeout(this.tokenTimer);
     this.router.navigate(['/login']);
@@ -185,6 +195,7 @@ export class UsersService {
         this.passwordChangeErrorMessageListener.next(
           'Current password is incorrect'
         );
+        this.passwordChangeErrorMessageListener.unsubscribe();
       }
     );
 
@@ -206,6 +217,7 @@ export class UsersService {
       this.token = authHeader.token;
       this.isAuthenticated = true;
       this.authStatusListener.next(true);
+      this.authStatusListener.subscribe();
       const duration: number =
         authHeader.expirationDate.getTime() - now.getTime();
       this.tokenTimer = setTimeout(() => {
