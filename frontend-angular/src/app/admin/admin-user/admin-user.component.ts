@@ -17,6 +17,7 @@ export class AdminUserComponent implements OnInit {
 
   public redirectToAdmin(): void {
     this.isEditEvent.emit(false);
+    this.isEditEvent.unsubscribe();
   }
 
   public deleteUser() {
