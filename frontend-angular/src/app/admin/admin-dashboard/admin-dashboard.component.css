@@ -1,6 +1,5 @@
 .container {
   box-sizing: border-box;
-  height: 100vh;
 }
 
 .container .dashboard {

@@ -12,8 +12,10 @@ import { User } from '../../models/users';
 export class AdminDashboardComponent implements OnInit {
   public tableName: string = 'Users';
   public users: { fullName: string; email: string; isAdmin: boolean }[] = [];
+  public products: { title: string; description: string; price: number }[] = [];
   public showLoadMore: boolean = true;
   public skip: number = 0;
+  public isToggleProducts: boolean = false;
 
   public user: User;
 
@@ -31,6 +33,8 @@ export class AdminDashboardComponent implements OnInit {
           return;
         } else if (res.length < 12) {
           this.showLoadMore = false;
+        } else {
+          this.showLoadMore = true;
         }
         this.users = [];
         for (const user of res) {
@@ -42,6 +46,39 @@ export class AdminDashboardComponent implements OnInit {
           });
         }
       });
+  }
+
+  public toggleProducts(): void {
+    this.tableName = 'Products';
+    this.isToggleProducts = true;
+
+    this.http
+      .get(
+        this.usersService.url + `/api/products/getProducts?skip=${this.skip}`
+      )
+      .subscribe((res: any) => {
+        if (res.length === 0) {
+          this.showLoadMore = false;
+          return;
+        } else if (res.length < 12) {
+          this.showLoadMore = false;
+        }
+        this.products = [];
+        for (const product of res) {
+          const { title, description, price } = product;
+          this.products.push({
+            title,
+            description,
+            price,
+          });
+        }
+      });
+  }
+
+  public toggleUsers(): void {
+    this.tableName = 'Users';
+    this.isToggleProducts = false;
+    this.ngOnInit();
   }
 
   public loadNextPage(): void {
@@ -58,21 +95,16 @@ export class AdminDashboardComponent implements OnInit {
   public toggleEdit(user: User): void {
     this.isEditEvent.emit(true);
     this.userEdit.emit(user);
+    this.isEditEvent.unsubscribe();
+    this.userEdit.unsubscribe();
   }
 
   public toggleCreateUser(): void {
     this.isCreateEvent.emit(true);
+    this.isCreateEvent.unsubscribe();
   }
 
   public logout(): void {
     this.usersService.logout();
-  }
-
-  public toggleUsers(): void {
-    this.tableName = 'Users';
-  }
-
-  public toggleProducts(): void {
-    this.tableName = 'Products';
   }
 }

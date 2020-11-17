@@ -16,12 +16,17 @@
         <div class="table-header">
           {{tableName}}
         </div>
-        <div class="table-columns">
+        <div class="table-columns" *ngIf="!isToggleProducts">
           <p>Full Name</p>
           <p>Email</p>
           <p>Is Admin</p>
         </div>
-        <div class="table-data">
+        <div class="table-columns" *ngIf="isToggleProducts">
+          <p>Title</p>
+          <p>Description</p>
+          <p>Price</p>
+        </div>
+        <div class="table-data" *ngIf="!isToggleProducts">
           <div class="row" *ngFor="let user of users" (click)="toggleEdit(user)">
             <p>{{user.fullName}}</p>
             <p>{{user.email}}</p>
@@ -34,10 +39,23 @@
               <button *ngIf="showLoadMore" class="load-more" (click)="loadNextPage()"><p>Next Page</p></button>
             </div>
           </div>
-          <!-- 12 -->
+        </div>
+        <div class="table-data" *ngIf="isToggleProducts">
+          <div class="row" *ngFor="let product of products">
+            <p>{{product.title}}</p>
+            <p>{{product.description}}</p>
+            <p>{{product.price}}</p>
+          </div>
+          <div class="center">
+            <div class="buttons">
+              <button *ngIf="skip != 0" class="load-more" (click)="loadPreviousPage()"><p>Previous Page</p></button>
+              <button *ngIf="showLoadMore" class="load-more" (click)="loadNextPage()"><p>Next Page</p></button>
+            </div>
+          </div>
         </div>
         <div class="options">
-          <button class="create-user" (click)="toggleCreateUser()"><p>Create User</p></button>
+          <button class="create-user" (click)="toggleCreateUser()"  *ngIf="!isToggleProducts"><p>Create User</p></button>
+          <button class="create-user" *ngIf="isToggleProducts"><p>Add Product</p></button>
         </div>
       </div>
     </div>
