@@ -1,0 +1,151 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 92vh;
+  background-color: #f5f5f5;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+i {
+  font-size: 1.6rem;
+}
+
+.container .register_wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10rem;
+  height: 35rem;
+  width: 25rem;
+  background-color: #fff;
+  box-shadow: 0 0 0.6rem 0.1rem #ccc;
+  border: 1px #e1e1e1 solid;
+  border-radius: 0.4rem;
+}
+
+.container .register_wrapper #heading {
+  margin: auto;
+  color: #000;
+  font-family: "Lato", sans-serif;
+  font-weight: lighter;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.container .register_wrapper .image_input {
+  margin-left: 0.8rem;
+}
+
+.container .register_wrapper .image_input button {
+  width: 92%;
+  padding: 0.5rem 0;
+  background-color: #000;
+  color: #fff;
+}
+
+.container .register_wrapper .image_input button:hover {
+  background-color: #222;
+}
+
+.container .register_wrapper .form_input {
+  margin-left: 0.8rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+.container .register_wrapper .form_input label {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.container .register_wrapper .form_input input {
+  margin-top: 0.4rem;
+  padding: 0.4rem;
+  width: 92%;
+  border-radius: 0.3rem;
+  border: 0.1rem #aaa solid;
+  outline: none;
+}
+
+.container .register_wrapper div button {
+  margin: 1rem 0.3rem;
+  margin-bottom: 0.5rem;
+  width: 22%;
+  padding: 0.5rem;
+  color: #000;
+  background-color: #fff;
+  border-radius: 0.3rem;
+  border: 0.1rem #cac9c9 solid;
+  outline: none;
+  cursor: pointer;
+}
+
+.container .register_wrapper div .triggerd {
+  color: #fff;
+  background-color: #000;
+}
+
+.container .register_wrapper div button:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+.container .register_wrapper .submit {
+  display: flex;
+  margin: 1.3rem auto;
+  margin-bottom: 1rem;
+  width: 89%;
+}
+
+.container .register_wrapper .submit button:first-child {
+  flex: 3.5;
+  padding: 0.5rem;
+  margin-left: 0;
+  margin-right: 0;
+  color: #fff;
+  background-color: #000;
+  border-radius: 0.3rem;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.container .register_wrapper .submit button {
+  flex: 1;
+  padding: 0.5rem;
+  color: #fff;
+  background-color: #f00;
+  border-radius: 0.3rem;
+  border: 0.2rem #f00 solid;
+  outline: none;
+  cursor: pointer;
+}
+
+.container .register_wrapper .submit button:first-child:hover {
+  background-color: #333;
+}
+
+.container .register_wrapper .submit button:hover {
+  background-color: #f00;
+}
+
+.container .register_wrapper p {
+  margin: auto auto 1rem auto;
+  font-size: 1rem;
+}
+
+.container .register_wrapper p a {
+  color: #000;
+  text-decoration: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.container .register_wrapper p a:hover {
+  color: #333;
+}
