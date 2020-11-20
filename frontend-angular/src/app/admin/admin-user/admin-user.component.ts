@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 
-import { User } from './../../models/users';
+import { User } from '../../object-models';
 
 @Component({
   selector: 'app-admin-user',

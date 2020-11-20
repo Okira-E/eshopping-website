@@ -1,4 +1,4 @@
-import { User } from './../../models/users';
+import { User } from '../../object-models';
 import { NgForm } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
@@ -13,7 +13,7 @@ export class AdminAddUserComponent implements OnInit {
   public errMsgId: string = 'disappear';
   public isAdminInput: boolean = false;
 
-  @Output() private isCreateEvent = new EventEmitter<boolean>();
+  @Output() private isCreateUserEvent = new EventEmitter<boolean>();
   constructor(private usersService: UsersService) {}
 
   ngOnInit() {}
@@ -45,8 +45,8 @@ export class AdminAddUserComponent implements OnInit {
   }
 
   public toggleCreateUser(): void {
-    this.isCreateEvent.emit(false);
-    this.isCreateEvent.unsubscribe();
+    this.isCreateUserEvent.emit(false);
+    this.isCreateUserEvent.unsubscribe();
   }
 
   public toggleIsAdminInput(isAdmin: boolean) {

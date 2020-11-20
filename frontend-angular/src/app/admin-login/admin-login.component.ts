@@ -1,4 +1,4 @@
-import { User } from './../models/users';
+import { User } from '../object-models';
 import { NgForm } from '@angular/forms';
 import { UsersService } from './../services/users.service';
 import { Component, OnInit } from '@angular/core';

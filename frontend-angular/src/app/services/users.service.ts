@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../models/users';
+import { User } from '../object-models';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -174,6 +174,11 @@ export class UsersService {
     this.http
       .post(this.url + '/api/users/updateprofilepicture', formData)
       .subscribe();
+  }
+
+  public uploadProductImage(formData: FormData) {
+    console.log(formData);
+    this.http.post(this.url + '/api/products/create', formData).subscribe();
   }
 
   public logout(): void {

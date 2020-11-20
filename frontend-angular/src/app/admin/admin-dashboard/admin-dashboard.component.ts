@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { UsersService } from '../../services/users.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-import { User } from '../../models/users';
+import { User } from '../../object-models';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -20,7 +20,8 @@ export class AdminDashboardComponent implements OnInit {
   public user: User;
 
   @Output() private isEditEvent = new EventEmitter<boolean>();
-  @Output() private isCreateEvent = new EventEmitter<boolean>();
+  @Output() private isCreateUserEvent = new EventEmitter<boolean>();
+  @Output() private isCreateProductEvent = new EventEmitter<boolean>();
   @Output() private userEdit = new EventEmitter<User>();
   constructor(private usersService: UsersService, private http: HttpClient) {}
 
@@ -100,8 +101,13 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   public toggleCreateUser(): void {
-    this.isCreateEvent.emit(true);
-    this.isCreateEvent.unsubscribe();
+    this.isCreateUserEvent.emit(true);
+    this.isCreateUserEvent.unsubscribe();
+  }
+
+  public toggleCreateProduct(): void {
+    this.isCreateProductEvent.emit(true);
+    this.isCreateProductEvent.unsubscribe();
   }
 
   public logout(): void {
