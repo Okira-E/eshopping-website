@@ -1,7 +1,7 @@
 import { UsersService } from './../services/users.service';
 import { Component, OnInit } from '@angular/core';
 
-import { User } from './../models/users';
+import { User } from '../object-models';
 
 @Component({
   selector: 'app-admin',
@@ -11,6 +11,7 @@ import { User } from './../models/users';
 export class AdminComponent implements OnInit {
   public isEdit: boolean = false;
   public isCreateUser: boolean = false;
+  public isCreateProduct: boolean = false;
   public user: User;
 
   constructor(private usersService: UsersService) {}
@@ -23,6 +24,10 @@ export class AdminComponent implements OnInit {
 
   public toggleCreateUser($event) {
     this.isCreateUser = $event;
+  }
+
+  public toggleCreateProduct($event) {
+    this.isCreateProduct = $event;
   }
 
   public recieveUser($event) {
