@@ -55,7 +55,7 @@
         </div>
         <div class="options">
           <button class="create-user" (click)="toggleCreateUser()"  *ngIf="!isToggleProducts"><p>Create User</p></button>
-          <button class="create-user" *ngIf="isToggleProducts"><p>Add Product</p></button>
+          <button class="create-user" *ngIf="isToggleProducts" (click)="toggleCreateProduct()"><p>Add Product</p></button>
         </div>
       </div>
     </div>
