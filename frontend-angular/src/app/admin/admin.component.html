@@ -7,7 +7,13 @@
       <i class="fas fa-door-open" (click)="logout()"></i>
     </div>
   </div>
-  <app-admin-dashboard *ngIf="!isEdit && !isCreateUser" (isEditEvent)="toggleIsEdit($event)" (userEdit)="recieveUser($event)" (isCreateEvent)="toggleCreateUser($event)"></app-admin-dashboard>
-  <app-admin-user *ngIf="isEdit && !isCreateUser" [user]="user" (isEditEvent)="toggleIsEdit($event)"></app-admin-user>
-  <app-admin-add-user *ngIf="isCreateUser" (isCreateEvent)="toggleCreateUser($event)"></app-admin-add-user>
+  <app-admin-dashboard
+  *ngIf="!isEdit && !isCreateUser && !isCreateProduct"
+  (isEditEvent)="toggleIsEdit($event)"
+  (userEdit)="recieveUser($event)"
+  (isCreateUserEvent)="toggleCreateUser($event)"
+  (isCreateProductEvent)="toggleCreateProduct($event)"></app-admin-dashboard>
+  <app-admin-user *ngIf="isEdit && !isCreateUser && !isCreateProduct" [user]="user" (isEditEvent)="toggleIsEdit($event)"></app-admin-user>
+  <app-admin-add-user *ngIf="isCreateUser && !isCreateProduct" (isCreateUserEvent)="toggleCreateUser($event)"></app-admin-add-user>
+  <app-admin-add-product *ngIf="isCreateProduct" (isCreateProductEvent)="toggleCreateProduct($event)"></app-admin-add-product>
 </div>
