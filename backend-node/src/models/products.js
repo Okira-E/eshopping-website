@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema(
         description: {
             required: true,
             type: String,
-            maxlength: 800,
+            maxlength: 1400,
         },
         image: {
             required: true,
