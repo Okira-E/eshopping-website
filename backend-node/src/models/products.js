@@ -15,10 +15,10 @@ const productSchema = new mongoose.Schema(
         description: {
             required: true,
             type: String,
-            maxlength: 400,
+            maxlength: 800,
         },
         image: {
-            required: false,
+            required: true,
             type: String,
         },
     },
