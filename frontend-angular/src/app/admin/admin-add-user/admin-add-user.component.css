@@ -81,7 +81,7 @@
 
 .container .register_wrapper .submit button:first-child {
   flex: 3.5;
-  padding: 0.7rem;
+  padding: 0.5rem;
   margin-left: 0;
   margin-right: 0;
   color: #fff;
@@ -94,11 +94,11 @@
 
 .container .register_wrapper .submit button {
   flex: 1;
-  padding: 0.7rem;
+  padding: 0.5rem;
   color: #fff;
   background-color: #f00;
   border-radius: 0.3rem;
-  border: 0;
+  border: 0.2rem #f00 solid;
   outline: none;
   cursor: pointer;
 }
