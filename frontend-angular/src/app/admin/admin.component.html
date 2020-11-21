@@ -8,12 +8,22 @@
     </div>
   </div>
   <app-admin-dashboard
-  *ngIf="!isEdit && !isCreateUser && !isCreateProduct"
-  (isEditEvent)="toggleIsEdit($event)"
+  *ngIf="!isUserEdit && !isProductEdit && !isCreateUser && !isCreateProduct"
+  (isEditUserEvent)="toggleIsEditUser($event)"
+  (isEditProductEvent)="toggleIsEditProduct($event)"
   (userEdit)="recieveUser($event)"
+  (productEdit)="recieveProduct($event)"
   (isCreateUserEvent)="toggleCreateUser($event)"
   (isCreateProductEvent)="toggleCreateProduct($event)"></app-admin-dashboard>
-  <app-admin-user *ngIf="isEdit && !isCreateUser && !isCreateProduct" [user]="user" (isEditEvent)="toggleIsEdit($event)"></app-admin-user>
-  <app-admin-add-user *ngIf="isCreateUser && !isCreateProduct" (isCreateUserEvent)="toggleCreateUser($event)"></app-admin-add-user>
-  <app-admin-add-product *ngIf="isCreateProduct" (isCreateProductEvent)="toggleCreateProduct($event)"></app-admin-add-product>
+  <app-admin-user
+  *ngIf="isUserEdit && !isCreateUser && !isCreateProduct && !isProductEdit"
+  [user]="user"
+  (isEditUserEvent)="toggleIsEditUser($event)"></app-admin-user>
+  <app-admin-product *ngIf="isProductEdit && !isCreateUser && !isCreateProduct  && !isUserEdit"
+  [product]="product"
+  (isEditProductEvent)="toggleIsEditProduct($event)"></app-admin-product>
+  <app-admin-add-user *ngIf="isCreateUser && !isCreateProduct"
+  (isCreateUserEvent)="toggleCreateUser($event)"></app-admin-add-user>
+  <app-admin-add-product *ngIf="isCreateProduct"
+  (isCreateProductEvent)="toggleCreateProduct($event)"></app-admin-add-product>
 </div>
