@@ -27,7 +27,7 @@
           <p>Price</p>
         </div>
         <div class="table-data" *ngIf="!isToggleProducts">
-          <div class="row" *ngFor="let user of users" (click)="toggleEdit(user)">
+          <div class="row" *ngFor="let user of users" (click)="toggleEditUser(user)">
             <p>{{serializeField(user.fullName)}}</p>
             <p>{{serializeField(user.email)}}</p>
             <i *ngIf="user.isAdmin" class="fas fa-check"></i>
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="table-data" *ngIf="isToggleProducts">
-          <div class="row" *ngFor="let product of products">
+          <div class="row" *ngFor="let product of products" (click)="toggleEditProduct(product)">
             <p>{{serializeField(product.title)}}</p>
             <p>{{serializeField(product.description)}}</p>
             <p>{{product.price}}$</p>
