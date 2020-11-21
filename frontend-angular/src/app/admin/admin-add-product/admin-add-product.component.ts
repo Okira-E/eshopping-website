@@ -1,7 +1,6 @@
 import { imageValidator } from './../../services/mime-type.validator';
 import {
   FormGroup,
-  NgForm,
   FormControl,
   Validators,
   AbstractControl,
