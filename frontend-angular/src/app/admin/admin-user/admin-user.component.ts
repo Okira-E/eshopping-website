@@ -10,14 +10,14 @@ import { User } from '../../object-models';
 })
 export class AdminUserComponent implements OnInit {
   @Input() public user: User;
-  @Output() private isEditEvent = new EventEmitter<boolean>();
+  @Output() private isEditUserEvent = new EventEmitter<boolean>();
   constructor(private userService: UsersService) {}
 
   ngOnInit(): void {}
 
   public redirectToAdmin(): void {
-    this.isEditEvent.emit(false);
-    this.isEditEvent.unsubscribe();
+    this.isEditUserEvent.emit(false);
+    this.isEditUserEvent.unsubscribe();
   }
 
   public deleteUser() {
