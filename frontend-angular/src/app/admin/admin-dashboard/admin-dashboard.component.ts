@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { UsersService } from '../../services/users.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-import { User } from '../../object-models';
+import { User, Product } from '../../object-models';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -12,17 +12,19 @@ import { User } from '../../object-models';
 export class AdminDashboardComponent implements OnInit {
   public tableName: string = 'Users';
   public users: { fullName: string; email: string; isAdmin: boolean }[] = [];
-  public products: { title: string; description: string; price: number }[] = [];
+  public products: Product[] = [];
   public showLoadMore: boolean = true;
   public skip: number = 0;
   public isToggleProducts: boolean = false;
 
   public user: User;
 
-  @Output() private isEditEvent = new EventEmitter<boolean>();
+  @Output() private isEditUserEvent = new EventEmitter<boolean>();
+  @Output() private isEditProductEvent = new EventEmitter<boolean>();
   @Output() private isCreateUserEvent = new EventEmitter<boolean>();
   @Output() private isCreateProductEvent = new EventEmitter<boolean>();
   @Output() private userEdit = new EventEmitter<User>();
+  @Output() private productEdit = new EventEmitter<Product>();
   constructor(private usersService: UsersService, private http: HttpClient) {}
 
   ngOnInit(): void {
@@ -73,11 +75,12 @@ export class AdminDashboardComponent implements OnInit {
         }
         this.products = [];
         for (const product of res) {
-          const { title, description, price } = product;
+          const { title, description, price, image } = product;
           this.products.push({
             title,
             description,
             price,
+            image,
           });
         }
       });
@@ -100,11 +103,18 @@ export class AdminDashboardComponent implements OnInit {
     this.ngOnInit();
   }
 
-  public toggleEdit(user: User): void {
-    this.isEditEvent.emit(true);
+  public toggleEditUser(user: User): void {
+    this.isEditUserEvent.emit(true);
     this.userEdit.emit(user);
-    this.isEditEvent.unsubscribe();
+    this.isEditUserEvent.unsubscribe();
     this.userEdit.unsubscribe();
+  }
+
+  public toggleEditProduct(product: Product): void {
+    this.isEditProductEvent.emit(true);
+    this.productEdit.emit(product);
+    this.isEditProductEvent.unsubscribe();
+    this.productEdit.unsubscribe();
   }
 
   public toggleCreateUser(): void {
