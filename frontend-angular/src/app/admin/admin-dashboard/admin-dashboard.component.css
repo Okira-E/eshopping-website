@@ -94,7 +94,7 @@
   cursor: pointer;
 }
 
-.container .dashboard .right-side .right-side-wrapper .table-columns {
+.container .dashboard .right-side .right-side-wrapper .users-table-columns {
   display: flex;
   margin-left: 1.7rem;
   margin-top: 0.5rem;
@@ -103,7 +103,27 @@
   justify-content: space-between;
 }
 
-.container .dashboard .right-side .right-side-wrapper .table-columns p {
+.container .dashboard .right-side .right-side-wrapper .users-table-columns p {
+  font-family: "Lato", sans-serif;
+  font-size: 1.2rem;
+  border-bottom: 0.1rem solid #444;
+}
+
+.container .dashboard .right-side .right-side-wrapper .products-table-columns {
+  display: flex;
+  margin-left: 2.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-right: 3rem;
+  justify-content: space-between;
+}
+
+.container
+  .dashboard
+  .right-side
+  .right-side-wrapper
+  .products-table-columns
+  p {
   font-family: "Lato", sans-serif;
   font-size: 1.2rem;
   border-bottom: 0.1rem solid #444;
@@ -180,6 +200,9 @@
   padding: 0.4rem 1.7rem 0.4rem 0.4rem;
   font-family: "Lato", sans-serif;
   font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
 }
 
 .container .dashboard .right-side .right-side-wrapper .options {
