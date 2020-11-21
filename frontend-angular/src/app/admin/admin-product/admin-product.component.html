@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="dashboard">
+    <div class="wrapper">
+        <div class="info">
+          <h1>{{product.title}}</h1>
+          <div>
+            <img src={{product.image}}>
+            <h2>{{product.description}}</h2>
+          </div>
+          <h2 class="price">Price: {{product.price}}$</h2>
+        </div>
+        <div class="center">
+          <button class="btn-primary" (click)="redirectToAdmin()">Cancel</button>
+          <button class="btn-danger" (click)="deleteProduct()">Delete</button>
+        </div>
+    </div>
+  </div>
+</div>

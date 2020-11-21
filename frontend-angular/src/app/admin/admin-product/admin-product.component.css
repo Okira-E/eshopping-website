@@ -1,0 +1,102 @@
+.container {
+  box-sizing: border-box;
+}
+
+.container .dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 92vh;
+  background-color: #f5f5f5;
+}
+
+.container .dashboard .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 12rem;
+  height: 40rem;
+  width: 70rem;
+  background-color: #fff;
+  box-shadow: 0 0 0.6rem 0.1rem #ccc;
+  border: 1px #e1e1e1 solid;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+}
+
+.container .dashboard .wrapper .info {
+  margin-top: 2rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.container .dashboard .wrapper .info h1 {
+  margin-bottom: 1rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
+  font-weight: light;
+}
+
+.container .dashboard .wrapper .info div {
+  display: flex;
+}
+
+.container .dashboard .wrapper .info div img {
+  max-width: 10rem;
+  max-height: 15rem;
+}
+
+.container .dashboard .wrapper .info h2 {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: light;
+}
+
+.container .dashboard .wrapper .info .price {
+  float: right;
+  margin-top: 4rem;
+  margin-right: 2rem;
+  font-size: 2rem;
+}
+
+.container .dashboard .wrapper .center {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4rem;
+  padding: 1rem;
+}
+
+.container .dashboard .wrapper .center .btn-primary {
+  margin-top: 1.5rem;
+  margin-right: 0.6rem;
+  padding: 0.7rem 2rem;
+  color: #fff;
+  background-color: #000;
+  border: 0;
+  border-radius: 0.3rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.container .dashboard .wrapper .center .btn-primary:hover {
+  background-color: #333;
+  cursor: pointer;
+}
+
+.container .dashboard .wrapper .center .btn-danger {
+  margin-top: 1.5rem;
+  margin-left: 0.6rem;
+  padding: 0.7rem 2rem;
+  color: #fff;
+  background-color: #f00;
+  border: 0;
+  border-radius: 0.3rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.container .dashboard .wrapper .center .btn-danger:hover {
+  background-color: rgb(192, 13, 13);
+}
