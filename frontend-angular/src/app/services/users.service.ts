@@ -176,8 +176,7 @@ export class UsersService {
       .subscribe();
   }
 
-  public uploadProductImage(formData: FormData) {
-    console.log(formData);
+  public CreateProduct(formData: FormData) {
     this.http.post(this.url + '/api/products/create', formData).subscribe();
   }
 
