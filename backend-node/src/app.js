@@ -3,7 +3,7 @@ const path = require("path");
 const cors = require("cors");
 
 require("./db/mongo");
-const userRoutes = require("./routes/users");
+const { router } = require("./routes/users");
 const productRoutes = require("./routes/products");
 
 const app = express();
@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(userRoutes);
+app.use(router);
 app.use(productRoutes);
 app.use("/images", express.static(path.join("images")));
 
