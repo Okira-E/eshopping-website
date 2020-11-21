@@ -1,7 +1,7 @@
 import { UsersService } from './../services/users.service';
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../object-models';
+import { User, Product } from '../object-models';
 
 @Component({
   selector: 'app-admin',
@@ -9,17 +9,23 @@ import { User } from '../object-models';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-  public isEdit: boolean = false;
+  public isUserEdit: boolean = false;
+  public isProductEdit: boolean = false;
   public isCreateUser: boolean = false;
   public isCreateProduct: boolean = false;
   public user: User;
+  public product: Product;
 
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {}
 
-  public toggleIsEdit($event) {
-    this.isEdit = $event;
+  public toggleIsEditUser($event) {
+    this.isUserEdit = $event;
+  }
+
+  public toggleIsEditProduct($event) {
+    this.isProductEdit = $event;
   }
 
   public toggleCreateUser($event) {
@@ -32,6 +38,10 @@ export class AdminComponent implements OnInit {
 
   public recieveUser($event) {
     this.user = $event;
+  }
+
+  public recieveProduct($event) {
+    this.product = $event;
   }
 
   public logout(): void {
