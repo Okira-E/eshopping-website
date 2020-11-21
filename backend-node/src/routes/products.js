@@ -35,6 +35,20 @@ router.post(
     }
 );
 
+router.post("/api/products/delete", auth, async (req, res) => {
+    try {
+        await Product.deleteOne({
+            title: req.body.title,
+            description: req.body.description,
+            price: req.body.price,
+        });
+        res.status(200).send();
+    } catch (e) {
+        console.log(e);
+        res.status(500).send();
+    }
+});
+
 router.get("/api/products/getProducts", auth, async (req, res) => {
     try {
         const products = await Product.find()
