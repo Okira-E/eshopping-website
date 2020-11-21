@@ -20,6 +20,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminAddUserComponent } from './admin/admin-add-user/admin-add-user.component';
 import { AdminAddProductComponent } from './admin/admin-add-product/admin-add-product.component';
+import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
     AdminUserComponent,
     AdminAddUserComponent,
     AdminAddProductComponent,
+    AdminProductComponent,
   ],
   imports: [
     BrowserModule,
