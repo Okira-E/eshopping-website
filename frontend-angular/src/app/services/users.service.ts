@@ -1,3 +1,4 @@
+import { Product } from './../object-models';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../object-models';
@@ -208,6 +209,10 @@ export class UsersService {
 
   public deleteUser(user: User) {
     this.http.post(this.url + '/api/users/delete', user).subscribe();
+  }
+
+  public deleteProduct(product: Product) {
+    this.http.post(this.url + '/api/products/delete', product).subscribe();
   }
 
   public autoAuthUser() {
