@@ -70,8 +70,11 @@ export class AdminAddProductComponent implements OnInit {
     }
 
     formData.append('image', this.form.value.image, `${newTitle}`);
+    formData.append('title', this.form.value.title);
+    formData.append('description', this.form.value.description);
+    formData.append('price', this.form.value.price);
 
-    this.usersService.uploadProductImage(formData);
+    this.usersService.CreateProduct(formData);
     this.toggleCreateProduct();
   }
 }
