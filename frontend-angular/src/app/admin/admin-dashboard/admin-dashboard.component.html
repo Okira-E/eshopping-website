@@ -16,20 +16,20 @@
         <div class="table-header">
           {{tableName}}
         </div>
-        <div class="table-columns" *ngIf="!isToggleProducts">
+        <div class="users-table-columns" *ngIf="!isToggleProducts">
           <p>Full Name</p>
           <p>Email</p>
           <p>Is Admin</p>
         </div>
-        <div class="table-columns" *ngIf="isToggleProducts">
+        <div class="products-table-columns" *ngIf="isToggleProducts">
           <p>Title</p>
           <p>Description</p>
           <p>Price</p>
         </div>
         <div class="table-data" *ngIf="!isToggleProducts">
           <div class="row" *ngFor="let user of users" (click)="toggleEdit(user)">
-            <p>{{user.fullName}}</p>
-            <p>{{user.email}}</p>
+            <p>{{serializeField(user.fullName)}}</p>
+            <p>{{serializeField(user.email)}}</p>
             <i *ngIf="user.isAdmin" class="fas fa-check"></i>
             <i *ngIf="!user.isAdmin" class="fas fa-times"></i>
           </div>
@@ -42,9 +42,9 @@
         </div>
         <div class="table-data" *ngIf="isToggleProducts">
           <div class="row" *ngFor="let product of products">
-            <p>{{product.title}}</p>
-            <p>{{product.description}}</p>
-            <p>{{product.price}}</p>
+            <p>{{serializeField(product.title)}}</p>
+            <p>{{serializeField(product.description)}}</p>
+            <p>{{product.price}}$</p>
           </div>
           <div class="center">
             <div class="buttons">

@@ -49,6 +49,13 @@ export class AdminDashboardComponent implements OnInit {
       });
   }
 
+  public serializeField(field: string): string {
+    if (field.length > 40) {
+      field = field.substr(0, 40) + '...';
+    }
+    return field;
+  }
+
   public toggleProducts(): void {
     this.tableName = 'Products';
     this.isToggleProducts = true;
