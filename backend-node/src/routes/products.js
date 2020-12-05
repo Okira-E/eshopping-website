@@ -13,7 +13,7 @@ router.post(
     [auth, multer({ storage }).single("image")],
     async (req, res) => {
         const { email } = req.user;
-        const { title, description, price } = req.body;
+        const { title, description, price, category } = req.body;
 
         const serverUrl = req.protocol + "://" + req.get("host");
         const imagePath = serverUrl + "/images/" + req.file.filename;
@@ -25,6 +25,7 @@ router.post(
                 description,
                 price,
                 image: imagePath,
+                category,
             }).save();
 
             res.status(201).send();
