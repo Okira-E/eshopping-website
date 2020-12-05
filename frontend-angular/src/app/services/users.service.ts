@@ -177,7 +177,7 @@ export class UsersService {
       .subscribe();
   }
 
-  public CreateProduct(formData: FormData) {
+  public createProduct(formData: FormData) {
     this.http.post(this.url + '/api/products/create', formData).subscribe();
   }
 
