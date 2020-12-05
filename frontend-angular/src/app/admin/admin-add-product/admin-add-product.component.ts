@@ -1,10 +1,5 @@
 import { imageValidator } from './../../services/mime-type.validator';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  AbstractControl,
-} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService } from './../../services/users.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
@@ -16,9 +11,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class AdminAddProductComponent implements OnInit {
   public form: FormGroup;
   public imagePreview: string | ArrayBuffer = '';
-
-  private title: AbstractControl;
-  private description: AbstractControl;
 
   @Output() private isCreateProductEvent = new EventEmitter<boolean>();
   constructor(private usersService: UsersService) {}
@@ -32,6 +24,7 @@ export class AdminAddProductComponent implements OnInit {
       title: new FormControl(),
       description: new FormControl(),
       price: new FormControl(),
+      category: new FormControl(),
     });
   }
 
@@ -72,8 +65,9 @@ export class AdminAddProductComponent implements OnInit {
     formData.append('title', this.form.value.title);
     formData.append('description', this.form.value.description);
     formData.append('price', this.form.value.price);
+    formData.append('category', this.form.value.category);
 
-    this.usersService.CreateProduct(formData);
+    this.usersService.createProduct(formData);
     this.toggleCreateProduct();
   }
 }

@@ -17,6 +17,15 @@
         <label for="price">Price</label>
         <input formControlName="price" required type="number" name="price" id="price"/>
     </div>
+    <div class="form_input">
+      <label for="category">Choose a category</label>
+      <select formControlName="category" id="category">
+        <option value="mobile">Mobile Phones</option>
+        <option value="laptop">Laptops</option>
+        <option value="tablet">Tablets</option>
+        <option value="tv">TVs</option>
+      </select>
+  </div>
     <div class="submit">
       <button (click)="uploadImage()">Create</button>
       <button (click)="toggleCreateProduct()">Cancel</button>
