@@ -1,5 +1,8 @@
+"use strict";
 const express = require("express");
 const multer = require("multer");
+const fs = require("fs");
+const { promisify } = require("util");
 
 const Product = require("../models/products");
 const User = require("../models/users");
@@ -7,6 +10,7 @@ const auth = require("../middleware/auth");
 const { storage } = require("./users");
 
 const router = new express.Router();
+const deleteImageAsync = promisify(fs.unlink);
 
 router.post(
     "/api/products/create",
@@ -29,8 +33,7 @@ router.post(
             }).save();
 
             res.status(201).send();
-        } catch (err) {
-            console.log(err);
+        } catch {
             res.status(403).send();
         }
     }
@@ -38,23 +41,30 @@ router.post(
 
 router.post("/api/products/delete", auth, async (req, res) => {
     try {
+        await deleteImageAsync(
+            req.body.image.replace("http://0.0.0.0:3200/", "./")
+        );
         await Product.deleteOne({
             title: req.body.title,
             description: req.body.description,
             price: req.body.price,
         });
         res.status(200).send();
-    } catch (e) {
-        console.log(e);
+    } catch (err) {
+        console.log(err);
         res.status(500).send();
     }
 });
 
 router.get("/api/products/getProducts", auth, async (req, res) => {
     try {
-        const products = await Product.find()
-            .skip(parseInt(req.query.skip))
-            .limit(12);
+        if (req.query.skip) {
+            var products = await Product.find()
+                .skip(parseInt(req.query.skip))
+                .limit(12);
+        } else {
+            var products = await Product.find();
+        }
         res.send(products);
     } catch {
         res.status(500).send();
