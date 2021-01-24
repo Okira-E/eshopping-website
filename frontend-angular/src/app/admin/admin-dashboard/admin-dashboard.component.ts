@@ -72,6 +72,8 @@ export class AdminDashboardComponent implements OnInit {
           return;
         } else if (res.length < 12) {
           this.showLoadMore = false;
+        } else {
+          this.showLoadMore = true;
         }
         this.products = [];
         for (const product of res) {
@@ -92,15 +94,26 @@ export class AdminDashboardComponent implements OnInit {
     this.ngOnInit();
   }
 
-  public loadNextPage(): void {
+  public loadNextUsersPage(): void {
     this.skip += 12;
     this.ngOnInit();
   }
 
-  public loadPreviousPage(): void {
+  public loadNextProductsPage(): void {
+    this.skip += 12;
+    this.toggleProducts();
+  }
+
+  public loadPreviousUsersPage(): void {
     this.showLoadMore = true;
     this.skip -= 12;
     this.ngOnInit();
+  }
+
+  public loadPreviousProductsPage(): void {
+    this.showLoadMore = true;
+    this.skip -= 12;
+    this.toggleProducts();
   }
 
   public toggleEditUser(user: User): void {
