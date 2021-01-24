@@ -33,7 +33,8 @@ router.post(
             }).save();
 
             res.status(201).send();
-        } catch {
+        } catch (err) {
+            console.log(err);
             res.status(403).send();
         }
     }
@@ -65,6 +66,25 @@ router.get("/api/products/getProducts", auth, async (req, res) => {
         } else {
             var products = await Product.find();
         }
+        res.send(products);
+    } catch {
+        res.status(500).send();
+    }
+});
+
+router.get("/api/products/getProductsByCategory", auth, async (req, res) => {
+    try {
+        // for (let category of categories) {
+        //     let products = [];
+        //     if ((req.query.category = category)) {
+        //         let resultProduct = await Product.find({ category });
+        //         products.push(resultProduct);
+        //     }
+        //     break;
+        // }
+        console.log(req.query.category);
+        const products = await Product.find({ category: req.query.category });
+        console.log(products);
         res.send(products);
     } catch {
         res.status(500).send();
