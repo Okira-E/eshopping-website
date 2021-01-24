@@ -1,3 +1,4 @@
+import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 
@@ -7,11 +8,21 @@ import { UsersService } from '../services/users.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private usersService: UsersService) {}
+  public categories = ['mobile', 'laptop', 'tablet', 'tv'];
+  public products = [];
 
-  ngOnInit(): void {}
+  constructor(
+    private usersService: UsersService,
+    private productsService: ProductsService
+  ) {}
 
-  logout() {
+  ngOnInit(): void {
+    for (let category of this.categories) {
+      this.productsService.getProductsByCategory(category);
+    }
+  }
+
+  logout(): void {
     this.usersService.logout();
   }
 }
