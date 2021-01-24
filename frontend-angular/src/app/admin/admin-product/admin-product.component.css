@@ -12,9 +12,10 @@
 
 .container .dashboard .wrapper {
   display: flex;
+  position: absolute;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 12rem;
+  margin-bottom: 10rem;
   height: 40rem;
   width: 70rem;
   background-color: #fff;
