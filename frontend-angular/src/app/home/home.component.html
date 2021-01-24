@@ -1,11 +1,16 @@
 <app-header></app-header>
-<div class="container">
-    <div class="store-container">
-      <h1>Online Store</h1>
-    </div>
-    <div class="my-cart-container">
-      <div class="my-cart-card">
-        <h1>I suppose</h1>
+<div class="page-container">
+  <div class="content-container">
+    <h1 id="header">
+      Add as much as you want to the cart and pay later!
+    </h1>
+    <div class="products">
+      <div class="category" *ngFor="let catagory of categories">
+        {{catagory}}
+        <div class="product" *ngFor="let product of products">
+
+        </div>
       </div>
     </div>
+  </div>
 </div>
