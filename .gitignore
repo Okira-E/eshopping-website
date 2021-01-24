@@ -2,7 +2,6 @@
 /backend-node/config
 /backend-node/images
 /frontend-react/node_modules
-/frontend-angular/node_modulesm12
 /.idea
 /.vscode
 /backend-node/.idea
