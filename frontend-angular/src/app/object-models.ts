@@ -8,7 +8,8 @@ export interface User {
 
 export interface Product {
   title?: string;
-  description?: string;
   price?: number;
+  description?: string;
   image?: string;
+  category?: string;
 }
