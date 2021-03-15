@@ -17,9 +17,9 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    for (let category of this.categories) {
-      this.productsService.getProductsByCategory(category);
-    }
+    // for (let category of this.categories) {
+    //   this.productsService.getProductsByCategory(category);
+    // }
   }
 
   logout(): void {
