@@ -55,5 +55,6 @@
 
 .error_message {
   margin: 0.5rem 0;
+  color: #f00;
   font-family: "Lato", sans-serif;
 }
