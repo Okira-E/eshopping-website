@@ -20,9 +20,9 @@
     <div class="form_input">
       <label>Admin?</label>
       <button class="triggerd" (click)="ngOnInit()" *ngIf="!isAdminInput">No</button>
-      <button *ngIf="isAdminInput" (click)="toggleIsAdminInput(false)">No</button>
+      <button (click)="toggleIsAdminInput(false)" *ngIf="isAdminInput">No</button>
       <button class="triggerd" (click)="ngOnInit()" *ngIf="isAdminInput">Yes</button>
-      <button *ngIf="!isAdminInput" (click)="toggleIsAdminInput(true)">Yes</button>
+      <button (click)="toggleIsAdminInput(true)" *ngIf="!isAdminInput">Yes</button>
   </div>
     <div class="submit">
       <button>Create</button>
