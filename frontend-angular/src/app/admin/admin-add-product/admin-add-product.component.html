@@ -2,33 +2,103 @@
   <form [formGroup]="form" class="register_wrapper" #input="ngForm">
     <h2 id="heading">Add Product</h2>
     <div class="image_input">
-      <button (click)="inputFile.click()">Show us what you are selling <br/><br/> <i class="fas fa-camera"></i></button>
-      <input (change)="onUploadImage($event)" type="file" #inputFile>
+      <button (click)="inputFile.click()">
+        Show us what you are selling <br /><br />
+        <i class="fas fa-camera"></i>
+      </button>
+      <input (change)="onUploadImage($event)" type="file" #inputFile />
     </div>
     <div class="form_input">
-        <label for="title">Title</label>
-        <input formControlName="title" required maxlength="350" type="text" name="title" id="title" placeholder="Title Should Not Exceed 150 Words"/>
+      <label for="title">Title</label>
+      <input
+        formControlName="title"
+        required
+        maxlength="350"
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Title Should Not Exceed 150 Words"
+      />
     </div>
     <div class="form_input">
-        <label for="description">Description</label>
-        <textarea formControlName="description" required maxlength="1400" type="text" name="description" id="description" placeholder="You have up to 1400 characters to describe your product"></textarea>
+      <label for="description">Description</label>
+      <textarea
+        formControlName="description"
+        required
+        maxlength="1400"
+        type="text"
+        name="description"
+        id="description"
+        placeholder="You have up to 1400 characters to describe your product"
+      ></textarea>
     </div>
     <div class="form_input">
-        <label for="price">Price</label>
-        <input formControlName="price" required type="number" name="price" id="price"/>
+      <label for="price">Price</label>
+      <input
+        formControlName="price"
+        required
+        type="number"
+        name="price"
+        id="price"
+      />
     </div>
     <div class="form_input">
-      <label for="category">Choose a category</label>
-      <select formControlName="category" id="category">
-        <option value="mobile">Mobile Phones</option>
-        <option value="laptop">Laptops</option>
-        <option value="tablet">Tablets</option>
-        <option value="tv">TVs</option>
-      </select>
-  </div>
+      <div class="title">
+        <label>What type of product?</label>
+      </div>
+      <div class="product_type">
+        <button style="color: #fff;background-color: #000;" (click)="triggerElectronics()" *ngIf="isElectronicsTriggered">Electronics</button>
+        <button style="color: #000;background-color: #fff;" (click)="triggerElectronics()" *ngIf="isClothingsTriggered">Electronics</button>
+        <button style="color: #fff;background-color: #000;" (click)="triggerClothings()" *ngIf="isClothingsTriggered">Clothings</button>
+        <button style="color: #000;background-color: #fff;" (click)="triggerClothings()" *ngIf="isElectronicsTriggered">Clothings</button>
+      </div>
+      <div class="electronics" *ngIf="isElectronicsTriggered">
+        <button style="color: #000;background-color: #fff;" (click)="triggerLaptops()" *ngIf="!isLaptopsTriggered">Laptops</button>
+        <button style="color: #fff;background-color: #000;" (click)="triggerLaptops()" *ngIf="isLaptopsTriggered">Laptops</button>
+        <button style="color: #000;background-color: #fff;" (click)="triggerTVs()" *ngIf="!isTVsTriggered">TVs</button>
+        <button style="color: #fff;background-color: #000;" (click)="triggerTVs()" *ngIf="isTVsTriggered">TVs</button>
+        <button style="color: #000;background-color: #fff;" (click)="triggerTablets()" *ngIf="!isTabletsTriggered">Tablets</button>
+        <button style="color: #fff;background-color: #000;" (click)="triggerTablets()" *ngIf="isTabletsTriggered">Tablets</button>
+        <button style="color: #000;background-color: #fff;" (click)="triggerMobilePhones()" *ngIf="!isMobilePhonesTriggered">Phones</button>
+        <button style="color: #fff;background-color: #000;" (click)="triggerMobilePhones()" *ngIf="isMobilePhonesTriggered">Phones</button>
+      </div>
+      <div class="clothings" *ngIf="isClothingsTriggered">
+        <button style="color: #000;background-color: #fff;" (click)="triggerTshirts()" *ngIf="!isTshirtsTriggered">Tshirts</button>
+        <button style="color: #fff;background-color: #000;" (click)="triggerTshirts()" *ngIf="isTshirtsTriggered">Tshirts</button>
+        <button style="color: #000;background-color: #fff;" (click)="triggerPants()" *ngIf="!isPantsTriggered">Pants</button>
+        <button style="color: #fff;background-color: #000;" (click)="triggerPants()" *ngIf="isPantsTriggered">Pants</button>
+        <button style="color: #000;background-color: #fff;" (click)="triggerJackets()" *ngIf="!isJacketsTriggered">Jackets</button>
+        <button style="color: #fff;background-color: #000;" (click)="triggerJackets()" *ngIf="isJacketsTriggered">Jackets</button>
+        <button style="color: #000;background-color: #fff;" (click)="triggerShoes()" *ngIf="!isShoesTriggered">Shoes</button>
+        <button style="color: #fff;background-color: #000;" (click)="triggerShoes()" *ngIf="isShoesTriggered">Shoes</button>
+        <!-- <button style="color: #fff;background-color: #000;" (click)="triggerElectronics()" *ngIf="isElectronicsTriggered">Electronics</button>
+        <button style="color: #000;background-color: #fff;" (click)="triggerElectronics()" *ngIf="isClothingsTriggered">Electronics</button>
+        <button style="color: #fff;background-color: #000;" (click)="triggerClothings()" *ngIf="isClothingsTriggered">Clothings</button>
+        <button style="color: #000;background-color: #fff;" (click)="triggerClothings()" *ngIf="isElectronicsTriggered">Clothings</button> -->
+      </div>
+    </div>
+    <!-- <div class="product"> -->
+      <!-- <div class="form_input">
+        <label for="category">Choose a category</label>
+        <select formControlName="category" id="category">
+          <option value="mobile">Mobile Phones</option>
+          <option value="laptop">Laptops</option>
+          <option value="tablet">Tablets</option>
+          <option value="tv">TVs</option>
+        </select>
+      </div> -->
+      <!-- <div class="form_input">
+        <label for="category">Choose what type of clothing</label>
+        <select formControlName="category" id="category">
+          <option value="mobile">Mobile Phones</option>
+          <option value="laptop">Laptops</option>
+          <option value="tablet">Tablets</option>
+        </select>
+      </div> -->
+    <!-- </div> -->
     <div class="submit">
       <button (click)="uploadImage()">Create</button>
       <button (click)="toggleCreateProduct()">Cancel</button>
     </div>
-</form>
+  </form>
 </div>

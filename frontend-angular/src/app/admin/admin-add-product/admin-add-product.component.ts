@@ -11,6 +11,20 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class AdminAddProductComponent implements OnInit {
   public form: FormGroup;
   public imagePreview: string | ArrayBuffer = '';
+  public category: string = null;
+
+  public isElectronicsTriggered: boolean = true;
+  public isClothingsTriggered: boolean = false;
+
+  public isLaptopsTriggered: boolean = false;
+  public isTVsTriggered: boolean = false;
+  public isTabletsTriggered: boolean = false;
+  public isMobilePhonesTriggered: boolean = false;
+
+  public isTshirtsTriggered: boolean = false;
+  public isPantsTriggered: boolean = false;
+  public isJacketsTriggered: boolean = false;
+  public isShoesTriggered: boolean = false;
 
   @Output() private isCreateProductEvent = new EventEmitter<boolean>();
   constructor(private usersService: UsersService) {}
@@ -65,9 +79,102 @@ export class AdminAddProductComponent implements OnInit {
     formData.append('title', this.form.value.title);
     formData.append('description', this.form.value.description);
     formData.append('price', this.form.value.price);
-    formData.append('category', this.form.value.category);
+    formData.append('category', this.getCategory());
 
     this.usersService.createProduct(formData);
     this.toggleCreateProduct();
+  }
+
+  public getCategory(): string {
+    if (this.isElectronicsTriggered) {
+      if (this.isLaptopsTriggered) {
+        this.category = 'laptop';
+      } else if (this.isTVsTriggered) {
+        this.category = 'tv';
+      } else if (this.isTabletsTriggered) {
+        this.category = 'tablet';
+      } else if (this.isMobilePhonesTriggered) {
+        this.category = 'mobile';
+      }
+    } else {
+      if (this.isTshirtsTriggered) {
+        this.category = 'tshirt';
+      } else if (this.isPantsTriggered) {
+        this.category = 'pants';
+      } else if (this.isJacketsTriggered) {
+        this.category = 'jacket';
+      } else if (this.isShoesTriggered) {
+        this.category = 'shoe';
+      }
+    }
+
+    return this.category;
+  }
+
+  public triggerElectronics(): void {
+    // this.electronicsClass = "triggerd";
+    this.isElectronicsTriggered = true;
+    this.isClothingsTriggered = false;
+  }
+
+  public triggerClothings(): void {
+    this.isClothingsTriggered = true;
+    this.isElectronicsTriggered = false;
+  }
+
+  public triggerLaptops(): void {
+    this.isLaptopsTriggered = true;
+    this.isTVsTriggered = false;
+    this.isTabletsTriggered = false;
+    this.isMobilePhonesTriggered = false;
+  }
+
+  public triggerTVs(): void {
+    this.isLaptopsTriggered = false;
+    this.isTVsTriggered = true;
+    this.isTabletsTriggered = false;
+    this.isMobilePhonesTriggered = false;
+  }
+
+  public triggerTablets(): void {
+    this.isLaptopsTriggered = false;
+    this.isTVsTriggered = false;
+    this.isTabletsTriggered = true;
+    this.isMobilePhonesTriggered = false;
+  }
+
+  public triggerMobilePhones(): void {
+    this.isLaptopsTriggered = false;
+    this.isTVsTriggered = false;
+    this.isTabletsTriggered = false;
+    this.isMobilePhonesTriggered = true;
+  }
+
+  public triggerTshirts(): void {
+    this.isTshirtsTriggered = true;
+    this.isPantsTriggered = false;
+    this.isJacketsTriggered = false;
+    this.isShoesTriggered = false;
+  }
+
+  public triggerPants(): void {
+    this.isTshirtsTriggered = false;
+    this.isPantsTriggered = true;
+    this.isJacketsTriggered = false;
+    this.isShoesTriggered = false;
+  }
+
+  public triggerJackets(): void {
+    this.isTshirtsTriggered = false;
+    this.isPantsTriggered = false;
+    this.isJacketsTriggered = true;
+    this.isShoesTriggered = false;
+  }
+
+  public triggerShoes(): void {
+    this.isTshirtsTriggered = false;
+    this.isPantsTriggered = false;
+    this.isJacketsTriggered = false;
+    this.isShoesTriggered = true;
   }
 }
