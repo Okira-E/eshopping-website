@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  node:
+    build: backend-node/.
+    container_name: "ecommerce-backend"
+    command: "npm run dev"
+    volumes:
+      - .:/backend-node/src
+    ports:
+      - "3200:3200"
+  angular:
+    build: frontend-angular/.
+    container_name: "ecommerce-frontend"
+    command: "ng serve --host 0.0.0.0"
+    volumes:
+      - .:/frontend-angular/src
+    ports:
+      - "4200:4200"
